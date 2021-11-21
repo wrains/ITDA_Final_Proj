@@ -80,5 +80,5 @@ tribble(
 )
 
 ```
-From this output we can see that 
+From this output we can see the date ranges of the datasets.
 
