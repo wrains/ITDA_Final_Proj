@@ -1,0 +1,116 @@
+---
+title: "ITDAReport_FinalProject"
+author: "Will Rains, Samoussa Fofana, Alec Dudognon"
+date: "22/11/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE, warning = FALSE, message = FALSE)
+
+```  
+
+# Introduction
+
+## Problem Statement
+
+## Dataset
+
+
+
+
+# Analysis  
+
+## Step 1 - read in the dataset
+
+```{r echo=TRUE, eval=TRUE}
+library(readr)
+reservations <- read.csv("reservation_data.csv")
+visits <- read.csv("visit_data.csv")
+date_info <- read.csv("date_info.csv")
+restaurant_info <- read.csv("restaurant_info.csv")
+
+```  
+
+All the relevant data is read in - we started from a point where we ran SQL queries to get the restaurant information into the reservations and visits tables but need to do some variable manipulation to align the dates to get the date information to a point where we can join as some datasets store the date in different ways. For this we will use the **lubridate** package in R.
+
+## Load relevant packages for analysis
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```  
+
+## Examine the variables in the datasets, the command skimr::skim return us different table that show us the type of variables that we have in the different data_set reservations, visits, date_info, restaurant_info. The variable data will take respectively the name of reservartions, visits,date_info,restaurant_info which are data_set.
+
+```{r}
+for(data in list(reservations,visits,date_info,restaurant_info)) {
+  
+  print(skimr::skim(data))
+}
+
+```
+
+## Convert the date variables with lubridate
+
+```{r}
+reservations$visit_datetime <- ymd_hms(reservations$visit_datetime)
+reservations$reserve_datetime <- ymd_hms(reservations$reserve_datetime)
+
+visits$visit_date <- ymd(visits$visit_date)
+
+date_info$calendar_date <- ymd(date_info$calendar_date)
+
+
+```  
+
+## Examine the dates in each dataset, creating a table with the information relate to the different data_set
+```{r}
+tribble(
+  ~"variable",                       ~"Reservation",          ~"Visits", ~"Date-Info",
+  "visit min", min(reservations$visit_datetime), min(visits$visit_date), NA,
+  "visit max", max(reservations$visit_datetime), max(visits$visit_date), NA,
+  "reserve min", min(reservations$reserve_datetime), NA, NA,
+  "reserve max", max(reservations$reserve_datetime), NA, NA,
+  "Other min", NA                                  , NA, min(date_info$calendar_date),
+  "Other max", NA                                  , NA, max(date_info$calendar_date)
+  
+)
+
+```
+From this output we can see that the first visit that we have inside the data_set reservation is 2017-01-01 at 10:00 while the last visit that we have is at on 2017-05-28 at 23:00. The first call that we receive for the reservation of a table is on the date 2017-01-01 at 00:00 while the last call for a reservation is on the date 2017-03-31 23:00.
+
+Looking at the dataset Visits  also the first visit that we have inside the datas_et is on 2017-01-01 while the last visit that we receive is different from the one of the reservation cause it is on 2017-03-31.
+
+We also evaluate some information relate to the data_set date_info and we get that the first date that we have is 2016-01-01 while the last one is 2017-05-31.
+
+##  Try to identify which value to use to do the prediction
+
+new_frame<- data.frame(reservations)
+
+
+in each table summary each date, for each restaurant, based on hour, visitor, number of visitor. Like if i have a reservation during that hour summary all of them.
+
+first of january / 10 march
+
+### New part 23/11/2021
+
+```{r }
+reservations<- reservations%>%mutate(day_reservation = day(reservations$reserve_datetime))
+reservations<- reservations%>%mutate(month_reservation = month(reservations$reserve_datetime))
+
+# Selection of Test set From 01-01-2017 to 10-03-2017
+
+reservation_per_day<-reservations%>%filter(reserve_datetime>= ymd("20170101"), reserve_datetime<= ymd("20170310"))%>% group_by(ID,day_reservation,month_reservation)%>%summarise(Tot_visit_day = sum(reserve_visitors))
+
+
+```
+To get the total number of reservation in a day, we calculate the mean of of the total visitor, and then we divided the total number of visitor for the mean and we get the total number of reservation per day
+```{r}
+reservation_per_day2<-reservations%>%filter(reserve_datetime>= ymd("20170101"), reserve_datetime<= ymd("20170310"))%>% group_by(ID,day_reservation,month_reservation,air_genre_name,air_area_name,latitude,longitude)%>%summarise(Tot_visit_day = sum(reserve_visitors), mean_visitors_per_day = mean(reserve_visitors))
+
+reservation_per_day2<-reservation_per_day2%>%mutate(tot_reservation_per_day= Tot_visit_day/mean_visitors_per_day )
+
+```
+
+
