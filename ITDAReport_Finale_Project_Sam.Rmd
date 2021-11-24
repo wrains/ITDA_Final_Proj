@@ -112,5 +112,63 @@ reservation_per_day2<-reservations%>%filter(reserve_datetime>= ymd("20170101"), 
 reservation_per_day2<-reservation_per_day2%>%mutate(tot_reservation_per_day= Tot_visit_day/mean_visitors_per_day )
 
 ```
+# new part 24/11/2021
+
+#let's create the new test set
+
+```{r}
+reservation_per_day2Test<-reservations%>%filter( reserve_datetime>= ymd("20170310"))%>% group_by(ID,day_reservation,month_reservation,air_genre_name,air_area_name,latitude,longitude)%>%summarise(Tot_visitor_day = sum(reserve_visitors), mean_visitors_per_day = mean(reserve_visitors))
+
+reservation_per_day2Test<-reservation_per_day2Test%>%mutate(tot_reservation_per_day= Tot_visitor_day/mean_visitors_per_day )
+```
+
+# try to identify a prediction model for the total number of visitors
+
+
+##1
+```{r}
+mod1<-lm(reservation_per_day2$Tot_visitor_day ~ day_reservation+month_reservation+ air_genre_name+latitude+longitude+tot_reservation_per_day, data=reservation_per_day2)
+
+summary(mod1)
+```
+
+
+
+##2
+
+```{r}
+mod2<-lm(reservation_per_day2$Tot_visitor_day ~ day_reservation+ air_genre_name+latitude+longitude+tot_reservation_per_day, data=reservation_per_day2)
+
+summary(mod2)
+```
+```{r}
+mod3<-lm(reservation_per_day2$Tot_visitor_day ~ day_reservation+ air_genre_name+longitude+tot_reservation_per_day, data=reservation_per_day2)
+
+summary(mod3)
+```
+
+
+# validation of the model
+
+```{r}
+predictTest<-predict(mod3, newdata = reservation_per_day2Test)
+
+#Calculation of SSE
+
+sse<-sum((reservation_per_day2Test$Tot_visitor_day-predictTest)^2)
+
+#Calculation of the average of Tot visi per day in the Test set
+
+ybar<- mean(reservation_per_day2Test$Tot_visitor_day)
+
+#Calculation of SST
+sst<-sum((reservation_per_day2Test$Tot_visitor_day-ybar)^2)
+
+#Calculation of R-squared
+
+rsquared<- (1-(sse/sst))
+
+rsquared
+```
 
 
