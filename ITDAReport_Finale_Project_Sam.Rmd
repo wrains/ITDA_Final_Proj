@@ -101,12 +101,42 @@ first of january / 10 march
 ```{r }
 reservations<- reservations%>%mutate(day_reservation = day(reservations$reserve_datetime))
 reservations<- reservations%>%mutate(month_reservation = month(reservations$reserve_datetime))
+reservations<- reservations%>%mutate(year_reservation = 2017)
+reservations<- reservations%>%mutate(date = '')
+tail(reservations)
 
-# Selection of Training set From 01-01-2017 to 10-03-2017
+# reservation_per_day <- reservations %>%
+#   mutate(daymonrest=paste(day_reservation,month_reservation,ID))%>%
+#   group_by(ID,day_reservation,month_reservation,daymonrest)%>%
+#   summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
+#             count_of_reservations = n()) %>%
+#   mutate(cal_date = ymd(year=2017,month=month_reservation,day=day_reservation))
+# year <- 2017
+
+reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
+
+reservation_per_day <- reservations %>%
+  mutate(daymonrest=paste(day_reservation,month_reservation,ID))%>%
+  group_by(ID,daymonrest,date) %>%
+  summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
+            count_of_reservations = n()) 
+
+
+# filter(reserve_datetime>= ymd("20170101"), reserve_datetime<= ymd("20170310"))%>%
+
+# %>%
+#   group_by(ID,day_reservation,month_reservation,Tot_visit_day_from_Reservations)
+# %>%
+#   count(day_reservation,month_reservation,ID)
+# mutate(daymonrest=paste(day_reservation,month_reservation,ID))%>%
+
+names(reservations)
+names(reservation_per_day)
+
 
 reservation_per_day<-reservations%>%filter(reserve_datetime>= ymd("20170101"), reserve_datetime<= ymd("20170310"))%>% group_by(ID,day_reservation,month_reservation)%>%summarise(Tot_visit_day = sum(reserve_visitors))
 
-
+tail(reservation_per_day)
 ```
 To get the total number of reservation in a day, we calculate the mean of of the total visitor, and then we divided the total number of visitor for the mean and we get the total number of reservation per day
 ```{r}

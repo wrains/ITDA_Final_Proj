@@ -82,3 +82,35 @@ tribble(
 ```
 From this output we can see the date ranges of the datasets.
 
+
+Now we will summarize by day.
+
+```{r}
+reserve_data_day_summed <- reservations %>% mutate(reserveDay = day(reserve_datetime))
+
+tail(reserve_data_day_summed)
+
+reservations<- reservations%>%mutate(day_reservation = day(reservations$reserve_datetime))
+reservations<- reservations%>%mutate(month_reservation = month(reservations$reserve_datetime))
+reservations<- reservations%>%mutate(year_reservation = 2017)
+reservations<- reservations%>%mutate(date = '')
+
+reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
+
+reservation_per_day <- reservations %>%
+  mutate(day_mon_rest=paste(day_reservation,month_reservation,ID))%>%
+  group_by(ID,day_mon_rest,date) %>%
+  summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
+            count_of_reservations = n()) 
+
+head(reservation_per_day)
+```
+Now we've created a summarized version of the reservation dataset and we need to join this into the visits dataset to form our total dataset with all of the variables we will use
+
+```{r}
+combinedDataset <- visits %>% mutate(date = visit_date) %>%  left_join(reservation_per_day,by = c('date','ID')) %>%
+  mutate(calendar_date=date) %>% left_join(date_info,by='calendar_date')
+
+skimr::skim(combinedDataset)
+```
+
