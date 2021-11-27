@@ -1,0 +1,18 @@
+
+```{r}
+library(readr)
+submission<- read_csv("C:/Users/97sam/OneDrive - unibg.it/Desktop/UPC/Information and data Analysis/Project/project_submission (3).csv")
+```
+
+```{r}
+submission<-submission%>%mutate(date1 = str_sub(ID,-10,-1))
+submission<-submission%>%mutate(id = str_sub(ID,1,-13))
+submission$date1<-ymd(submission$date1)
+```
+
+```{r}
+
+submission<-rename(submission,iddata=ID,date=date1,ID=id)
+submission2<-left_join(submission,combinedDataset, by = "ID")
+
+``` 
