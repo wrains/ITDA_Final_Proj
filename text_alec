@@ -1,0 +1,318 @@
+---
+title: "Restaurant Final Project IT"
+author: "Will Rains, Samousa Fofana, Alec Dudognon"
+date: "11/21/2021"
+output: 
+  pdf_document:
+    latex_engine: xelatex
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = F,warning = F)
+library(RMySQL)
+library(tidyverse)
+library(dplyr)
+library(janitor)
+library(lubridate)
+```
+
+# Introduction
+
+## Problem Statement
+
+For this project, we need to forecast the number of customers
+expected for the different restaurants in our dataset. We have a
+certain amount of information about these restaurants like
+reservations, dates with the number of customers and reservations
+etc... 
+So we will make this prediction using different model (i.e. linear)
+
+## Dataset
+
+In this part we will become aware of the differents dataset we have at our disposal :
+
+``` {r names res}
+names(reservations)
+```
+
+First we have a dataset about the reservations in detail, with the
+number of expected reservations, the number of visitors with the date
+coupled with the restaurant ID.
+
+``` {r names visits}
+names(visits)
+```
+
+This table concerns the reservation part of our work. Indeed we find
+the ID of the restaurants with the corresponding data with the number
+of visitors.
+
+``` {r names date_info}
+names(date_info)
+```
+
+This dataset allows us to have information on the different dates
+contained in the reservation dataset. We can know the exact day and
+if it is a vacation.
+
+``` {r names rest_info}
+names(restaurant_info)
+
+```
+
+This dataset concerns the information specific to the restaurants we
+will analyze. We have an identification number (ID) for each
+restaurant and information about the type of restaurant and its
+location.
+
+# Analysis
+
+## Step 1 - read in the dataset
+
+```{r}
+mydb = dbConnect(
+  MySQL(), 
+  user="newuser1",
+  password="Newuser90",
+  dbname="itdaproject",
+  host="127.0.0.1"
+)
+
+dbListTables(mydb)
+reservations<-dbGetQuery(mydb, "SELECT * FROM itdaproject.air_reserve")
+visits<-dbGetQuery(mydb, "SELECT * FROM itdaproject.air_visit")
+date_info<-dbGetQuery(mydb, "SELECT * FROM itdaproject.date_info")
+restaurant_info<-dbGetQuery(mydb, "SELECT * FROM itdaproject.restaurant_info")
+```
+
+All the relevant data is read in - we started from a point where we ran SQL queries to get the restaurant information into the reservations and visits tables but need to do some variable manipulation to align the dates to get the date information to a point where we can join as some datasets store the date in different ways. For this we will use the **lubridate** package in R.
+
+## Load relevant packages for analysis
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+## Examine the variables in the datasets
+
+```{r}
+for(data in list(reservations,visits,date_info,restaurant_info)) {
+  
+  print(skimr::skim(data))
+}
+```
+
+
+## Convert the date variables with lubridate
+
+```{r}
+reservations$visit_datetime <- ymd_hms(reservations$visit_datetime)
+reservations$reserve_datetime <- ymd_hms(reservations$reserve_datetime)
+visits$visit_date <- ymd(visits$visit_date)
+date_info$calendar_date <- ymd(date_info$calendar_date)
+```
+
+
+## Examine the dates in each dataset
+```{r}
+tribble(
+  ~"variable",                       ~"Reservation",          ~"Visits", ~"Date-Info",
+  "visit min", min(reservations$visit_datetime), min(visits$visit_date), NA,
+  "visit max", max(reservations$visit_datetime), max(visits$visit_date), NA,
+  "reserve min", min(reservations$reserve_datetime), NA, NA,
+  "reserve max", max(reservations$reserve_datetime), NA, NA,
+  "Other min", NA                                  , NA, min(date_info$calendar_date),
+  "Other max", NA                                  , NA, max(date_info$calendar_date)
+  
+)
+```
+From this output we can see the date ranges of the datasets.
+
+
+Now we will summarize by day.
+
+```{r}
+reserve_data_day_summed <- reservations %>% mutate(reserveDay = day(reserve_datetime))
+tail(reserve_data_day_summed)
+reservations<- reservations%>%mutate(day_reservation = day(reservations$reserve_datetime))
+reservations<- reservations%>%mutate(month_reservation = month(reservations$reserve_datetime))
+reservations<- reservations%>%mutate(year_reservation = 2017)
+reservations<- reservations%>%mutate(date = '')
+reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
+reservation_per_day <- reservations %>%
+  mutate(day_mon_rest=paste(day_reservation,month_reservation,ID))%>%
+  group_by(ID,day_mon_rest,date) %>%
+  summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
+            count_of_reservations = n()) 
+head(reservation_per_day)
+```
+Now we've created a summarized version of the reservation dataset and we need to join this into the visits dataset to form our total dataset with all of the variables we will use
+
+```{r}
+visits <- visits %>% add_row(ID="restaurant_ 292",air_genre_name="Cafe/Sweets",air_area_name="T?ky?-to Shibuya-ku Shibuya",latitude=35.66178,longitude=139.7041) %>% add_row(ID="restaurant_ 325",air_genre_name="Cafe/Sweets",air_area_name="Hokkaid? Sapporo-shi Minami 3 J?nishi",latitude=43.05546,longitude=141.341)
+combinedDataset <- visits %>% mutate(date = visit_date) %>%  left_join(reservation_per_day,by = c('date','ID')) %>%
+  mutate(calendar_date=date) %>% left_join(date_info,by='calendar_date')
+combinedDataset %>% group_by(air_genre_name) %>% summarise(avgDailyVisitsGenre = mean(visitors))
+combinedDataset <- combinedDataset %>% left_join(
+  y=(combinedDataset %>% group_by(air_genre_name) %>% summarise(avgDailyVisitsGenre = mean(visitors))),
+by="air_genre_name")
+skimr::skim(combinedDataset)
+```
+
+Create Training and test
+```{r}
+trainset <- subset(combinedDataset,visit_date <= as.Date("2017-03-10"))
+testset <- subset(combinedDataset,visit_date > as.Date("2017-03-10"))
+```
+
+
+
+##1
+```{r}
+skimr::skim(combinedDataset)
+names(combinedDataset)
+mod1<-lm(visitors ~ date + air_genre_name+latitude+longitude+count_of_reservations, data=trainset)
+summary(mod1)
+```
+
+
+
+##2
+
+```{r}
+mod2<- lm( visitors ~ date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + latitude + longitude, data=trainset)
+summary(mod2)
+```
+
+#3
+```{r}
+mod3<- lm( visitors ~ visit_date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
+summary(mod3)
+```
+
+```{r}
+mod4<- lm( visitors ~  ID + visit_date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + latitude + longitude, data=trainset)
+summary(mod4)
+```
+
+```{r}
+mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
+summary(mod5)
+```
+
+```{r}
+mod6<- lm( visitors ~  visit_date + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
+summary(mod6)
+```
+
+
+
+# validation of the model
+
+```{r}
+# predictTest<-predict(mod3, newdata = reservation_per_day2Test)
+# 
+# #Calculation of SSE
+# 
+# sse<-sum((reservation_per_day2Test$Tot_visitor_day-predictTest)^2)
+# 
+# #Calculation of the average of Tot visi per day in the Test set
+# 
+# ybar<- mean(reservation_per_day2Test$Tot_visitor_day)
+# 
+# #Calculation of SST
+# 
+# sst<-sum((reservation_per_day2Test$Tot_visitor_day-ybar)^2)
+# 
+# #Calculation of R-squared
+# 
+# rsquared<- (1-(sse/sst))
+# 
+# rsquared
+```
+
+
+
+
+
+
+
+
+```{r}
+submission <- read.csv("project_submission (1).csv")
+```
+
+```{r}
+submission<-submission%>%mutate(date1 = str_sub(ID,-10,-1))
+submission<-submission%>%mutate(id = str_sub(ID,1,-13))
+submission$date1<-ymd(submission$date1)
+head(submission)
+submission[1,4]
+submission$id <- str_trim(submission$id)
+submission[1,4]
+print('submission')
+names(submission)
+print('combined')
+names(combinedDataset)
+submission<-rename(submission,id=ID,date=date1,ID=id)
+head(submission)
+head(combinedDataset)
+submission$counter <- seq(from=1,to=15770,by=1) 
+skimr::skim(submission)
+submission <- submission %>% left_join(restaurant_info %>% select(-X),by="ID") %>% left_join(date_info %>% mutate(date = calendar_date),by="date")
+submission %>% pull(ID) %>% unique() %>%length() 
+restaurant_info %>% pull(ID) %>% unique() %>%length() 
+combinedDataset %>% filter(ID == "restaurant_ 292")
+visits %>% filter(ID == "restaurant_ 292")
+restaurant_info %>% filter(ID == "restaurant_ 292")
+submission_zeroes <- submission %>% filter(ID=="restaurant_ 292"|ID=="restaurant_ 325")
+submission <- submission %>% filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")
+submission$visitors <- predict(mod5, newdata = submission)
+submission$visitors <- round(submission$visitors,0)
+submission_zeroes <- submission_zeroes %>% select(id,visitors,counter)
+submission <- submission %>% select(id,visitors,counter)
+submission <-rename(submission,ID=id)
+names(submission_zeroes)
+submission_zeroes <-rename(submission_zeroes,ID=id)
+# submission <- submission %>% add_row(ID="restaurant_ 292",visitors=0) %>% add_row(ID="restaurant_ 325",visitors=0)
+glimpse(submission)
+submission <- bind_rows(submission,submission_zeroes) %>%arrange(counter)%>%select(-counter)
+skimr::skim(submission)
+submission %>% filter(str_detect(ID,"restaurant_ 292")|str_detect(ID,"restaurant_ 325"))
+submission %>% janitor::tabyl(visitors)
+submission$visitors <- if_else(submission$visitors<0,0,submission$visitors)
+submission %>% janitor::tabyl(visitors)
+submission %>% write_csv("project6_data_submission.csv")
+```
+
+factor ID has new levels restaurant_ 292, restaurant_ 325
+
+submission <- submission %>% left_join(combinedDataset %>% select(-visit_date,-visitors,-date,-day_mon_rest,-Tot_visit_day_from_Reservations,-count_of_reservations,-X.x,-X.y,-calendar_date,-ID.1),by="ID")
+
+mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=combinedDataset)
+summary(mod5)
+
+```{r}
+names(testset)
+testset<-testset%>%filter(ID!="restaurant_ 514",ID!="restaurant_ 516",ID!="restaurant_ 573")
+predictTest1<-predict(mod5, newdata = testset)
+#Calculation of SSE
+sse<-sum((testset$visitors-predictTest1)^2)
+#Calculation of the average of Tot visi per day in the Test set
+ybar2<- mean(testset$visitors)
+#Calculation of SST
+sst<-sum((testset$visitors-ybar2)^2)
+#Calculation of R-squared
+rsquared2<- (1-(sse/sst))
+rsquared2
+```
+
+
+
+
+
+
+```{r}
+# submission<-rename(submission,iddata=ID,date=date1,ID=id)
+# submission2<-left_join(submission,combinedDataset, by = "ID")
