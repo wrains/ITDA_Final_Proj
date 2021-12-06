@@ -208,12 +208,16 @@ summary(mod6)
 
 
 
+```{r}
+mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=combinedDataset)
+```
+
 
 
 
 
 ```{r}
-submission <- read.csv("project_submission (1).csv")
+submission <- read.csv("project_submission (3).csv")
 ```
 
 ```{r}
