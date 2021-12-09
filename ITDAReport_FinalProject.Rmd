@@ -132,7 +132,10 @@ testset <- subset(combinedDataset,visit_date > as.Date("2017-03-10"))
 
 
 
-##1
+## Now we wwill begin to fit with linear regression models to start
+This is a simpler modeling technique and we want to start here to see if by chance it is the best fitting type of model. 
+
+### Model 1
 ```{r}
 
 skimr::skim(combinedDataset)
@@ -146,7 +149,7 @@ summary(mod1)
 
 
 
-##2
+### Model 2
 
 ```{r}
 
@@ -156,11 +159,13 @@ mod2<- lm( visitors ~ date + Tot_visit_day_from_Reservations + day_of_week + hol
 summary(mod2)
 ```
 
-#3
+### Model 3
 ```{r}
 mod3<- lm( visitors ~ visit_date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
 summary(mod3)
 ```
+
+### Model 4
 
 ```{r}
 mod4<- lm( visitors ~  ID + visit_date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + latitude + longitude, data=trainset)
@@ -168,11 +173,15 @@ summary(mod4)
 
 ```
 
+### Model 5 
+
 ```{r}
 mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
 summary(mod5)
 
 ```
+
+### Model 6
 
 ```{r}
 mod6<- lm( visitors ~  visit_date + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
@@ -184,36 +193,71 @@ summary(mod6)
 # validation of the model
 
 ```{r}
-# predictTest<-predict(mod3, newdata = reservation_per_day2Test)
-# 
-# #Calculation of SSE
-# 
-# sse<-sum((reservation_per_day2Test$Tot_visitor_day-predictTest)^2)
-# 
-# #Calculation of the average of Tot visi per day in the Test set
-# 
-# ybar<- mean(reservation_per_day2Test$Tot_visitor_day)
-# 
-# #Calculation of SST
-# 
-# sst<-sum((reservation_per_day2Test$Tot_visitor_day-ybar)^2)
-# 
-# #Calculation of R-squared
-# 
-# rsquared<- (1-(sse/sst))
-# 
-# rsquared
+predictTest<-predict(mod5, newdata = (testset%>%filter(ID!="restaurant_ 514"&ID!="restaurant_ 516"&ID!="restaurant_ 573")%>%arrange(ID)))
+
+#Calculation of SSE
+
+testset=testset %>%arrange(ID)
+
+testset$visitors%>%length()
+
+predictTest%>%length()
+
+
+sse<-sum((testset$visitors-predictTest)^2)
+
+#Calculation of the average of Tot visi per day in the Test set
+
+ybar<- mean(testset$visitors)
+
+#Calculation of SST
+
+sst<-sum((testset$visitors-ybar)^2)
+
+#Calculation of R-squared
+
+rsquared<- (1-(sse/sst))
+
+rsquared
+
+############### Method from below may work here but something needs to be fixed with the datasets
+
+names(testset)
+testset<-testset%>%filter(ID!="restaurant_ 514",ID!="restaurant_ 516",ID!="restaurant_ 573")
+predictTest1<-predict(mod5, newdata = testset)
+
+#Calculation of SSE
+
+sse<-sum((testset$visitors-predictTest1)^2)
+
+#Calculation of the average of Tot visi per day in the Test set
+
+ybar2<- mean(testset$visitors)
+
+#Calculation of SST
+
+sst<-sum((testset$visitors-ybar2)^2)
+
+#Calculation of R-squared
+
+rsquared2<- (1-(sse/sst))
+
+rsquared2
+
+
+
 ```
 
+##################NEEED TO FIX - TEST SET AND PREDICTION NOT THE SAME IN THIS CASE
 
+## Refitting LM model with full dataset
 
+Now that we've tested with a train test split we want to reload the best LM model with the full dataset so that we don't drop levels when we predict the submission dataset.
 
 ```{r}
 mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=combinedDataset)
+summary(mod5)
 ```
-
-
-
 
 
 ```{r}
@@ -290,28 +334,67 @@ submission <- submission %>% left_join(combinedDataset %>% select(-visit_date,-v
 mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=combinedDataset)
 summary(mod5)
 
+
+######################Breaks rules of testing with the testset included in the model - need to move before we use the combined dataset##########################
 ```{r}
-names(testset)
-testset<-testset%>%filter(ID!="restaurant_ 514",ID!="restaurant_ 516",ID!="restaurant_ 573")
-predictTest1<-predict(mod5, newdata = testset)
 
-#Calculation of SSE
+```
+######################Breaks rules of testing with the testset included in the model - need to move before we use the combined dataset##########################
 
-sse<-sum((testset$visitors-predictTest1)^2)
 
-#Calculation of the average of Tot visi per day in the Test set
+## Now let's explore decision tree fits
 
-ybar2<- mean(testset$visitors)
+Now we specify and then fit the models.
 
-#Calculation of SST
 
-sst<-sum((testset$visitors-ybar2)^2)
+```{r}
+library(tidymodels)
 
-#Calculation of R-squared
+set.seed(42)
 
-rsquared2<- (1-(sse/sst))
+data_split <- initial_time_split(combinedDataset, prop = 0.75)
 
-rsquared2
+tm_train <- training(data_split) 
+tm_test <- testing(data_split)
+
+tm_rec <- tm_train %>%
+  recipe(visitors ~ . ) %>%
+  step_normalize(all_predictors())
+
+# Show the result of our recipe
+tm_rec 
+
+```
+To combine the data preparation with the model building, we use the **workflows**.
+
+```{r}
+tree_spec <- decision_tree() %>%
+  set_engine("rpart") %>%
+  set_mode("regression") %>%
+  translate()
+
+tree_fit <- tree_spec %>%
+  fit(visitors ~ .,
+      data=tm_train)
+    
+    
+tree_wf <- workflow() %>%
+  add_recipe(tm_rec) %>%
+  add_model(tree_spec)
+
+# lm_folds <-
+#  vfold_cv(tm_train)
+# 
+# tree_res <- fit_resamples(tree_wf, 
+#                          lm_folds ,
+#                          control=control_resamples(save_pred = TRUE)
+# )
+# 
+# tree_res %>%
+#   collect_metrics()                
+
+
+
 ```
 
 
@@ -319,9 +402,14 @@ rsquared2
 
 
 
+
 ```{r}
+#define a workflow to train the model 
+ 
+# tm_wf <- workflow() %>%
+#  add_model(fifa_lm) %>% 
+#  add_recipe(fifa_rec)
 
-# submission<-rename(submission,iddata=ID,date=date1,ID=id)
-# submission2<-left_join(submission,combinedDataset, by = "ID")
+```
 
-``` 
+
