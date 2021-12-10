@@ -434,15 +434,15 @@ firsttree <- rpart(
 firsttree
 
 
-Test2<- Test%>%filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")%>%arrange(ID)
-predtree <- predict(firsttree, newdata=Test2)
-
 
 ```
 
 #Validation with the test set
 
 ```{r}
+
+Test2<- Test%>%filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")%>%arrange(ID)
+predtree <- predict(firsttree, newdata=Test2)
 ## Test set filtered above
 
 #Calculation of SSE
