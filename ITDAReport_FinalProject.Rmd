@@ -412,4 +412,67 @@ tree_wf <- workflow() %>%
 
 ```
 
+##########
 
+# Creation of the regression tree with training set
+
+```{r}
+library(rpart)
+library(rpart.plot)
+library(caTools)
+
+split <- sample.split(combinedDataset$visitors, SplitRatio = 0.85)
+Train<- subset(combinedDataset, split == TRUE)
+Test<- subset(combinedDataset, split == FALSE)
+
+
+firsttree <- rpart(
+  formula = visitors ~ ID+visit_date+air_area_name+latitude+longitude+air_genre_name+avgDailyVisitsGenre+date+Tot_visit_day_from_Reservations+count_of_reservations,
+  data    = Train,
+  method  = "anova"
+  )
+firsttree
+
+
+Test2<- Test%>%filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")%>%arrange(ID)
+predtree <- predict(firsttree, newdata=Test2)
+
+
+```
+
+#Validation with the test set
+
+```{r}
+## Test set filtered above
+
+#Calculation of SSE
+
+Test2=Test2 %>%arrange(ID)
+
+Test2$visitors%>%length()
+
+predtree%>%length()
+
+
+sse<-sum((Test2$visitors-predtree)^2)
+
+#Calculation of the average of Tot visi per day in the Test set
+
+ybar<- mean(Test2$visitors)
+
+#Calculation of SST
+
+sst<-sum((Test2$visitors-ybar)^2)
+
+#Calculation of R-squared
+
+rsquared<- (1-(sse/sst))
+
+rsquared
+
+
+```
+
+```{r}
+
+```
