@@ -1,6 +1,6 @@
 ---
 title: "Restaurant Final Project IT"
-author: "Will Rains, Samousa Fofana, Alec Dudognon"
+author: "Michael Rains, Samousa Fofana, Alec Dudognon"
 date: "11/21/2021"
 output: 
   pdf_document:
@@ -261,7 +261,7 @@ summary(mod5)
 
 
 ```{r}
-submission <- read.csv("project_submission (3).csv")
+submission <- read.csv("project_submission (1).csv")
 ```
 
 ```{r}
@@ -352,6 +352,8 @@ library(tidymodels)
 
 set.seed(42)
 
+combinedDataset=combinedDataset%>%select(-X.x,-ID.1,-day_mon_rest,-Tot_visit_day_from_Reservations,-count_of_reservations)
+
 data_split <- initial_time_split(combinedDataset, prop = 0.75)
 
 tm_train <- training(data_split) 
@@ -367,31 +369,36 @@ tm_rec
 ```
 To combine the data preparation with the model building, we use the **workflows**.
 
+
+
 ```{r}
-tree_spec <- decision_tree() %>%
-  set_engine("rpart") %>%
-  set_mode("regression") %>%
-  translate()
+rf_spec <- rand_forest(mode = "regression") %>%
+  set_engine("ranger")
 
-tree_fit <- tree_spec %>%
+rf_spec
+## Random Forest Model Specification (regression)
+##
+## Computational engine: ranger
+rf_fit <- rf_spec %>%
   fit(visitors ~ .,
-      data=tm_train)
-    
-    
-tree_wf <- workflow() %>%
-  add_recipe(tm_rec) %>%
-  add_model(tree_spec)
+    data = tm_train
+  )
 
-# lm_folds <-
-#  vfold_cv(tm_train)
+rf_fit
+
+# results_train <- rf_fit %>%
+#     predict(new_data = tm_train) %>%
+#     mutate(
+#       truth = tm_train$visitors,
+#       model = "rf"
+#     )
 # 
-# tree_res <- fit_resamples(tree_wf, 
-#                          lm_folds ,
-#                          control=control_resamples(save_pred = TRUE)
-# )
-# 
-# tree_res %>%
-#   collect_metrics()                
+# results_test <- rf_fit %>%
+#     predict(new_data = tm_test) %>%
+#     mutate(
+#       truth = tm_test$visitors,
+#       model = "rf"
+#     )
 
 
 
@@ -401,14 +408,13 @@ tree_wf <- workflow() %>%
 
 
 
-
-
 ```{r}
-#define a workflow to train the model 
- 
-# tm_wf <- workflow() %>%
-#  add_model(fifa_lm) %>% 
-#  add_recipe(fifa_rec)
+results_train <- lm_fit %>%
+  predict(new_data = nfl_train) %>%
+  mutate(
+    truth = nfl_train$weekly_attendance,
+    model = "rf"
+  )
 
 ```
 
@@ -432,8 +438,6 @@ firsttree <- rpart(
   method  = "anova"
   )
 firsttree
-
-
 
 ```
 
@@ -473,6 +477,4 @@ rsquared
 
 ```
 
-```{r}
 
-```
