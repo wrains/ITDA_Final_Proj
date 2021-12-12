@@ -15,13 +15,105 @@ knitr::opts_chunk$set(echo = TRUE, message = F,warning = F)
 
 ## Problem Statement
 
+For this project, we need to forecast the number of customers expected for the different restaurants in our data set. We have a certain amount of information about these restaurants like reservations, dates with the number of customers and reservations
+etc... So we will make this prediction using different model (i.e. linear, decision tree and raandom forest model)
+
 ## Dataset
 
+In this part we will become aware of the differents dataset we have at our disposal :
+
+``` {r names res}
+names(reservations)
+```
+
+First we have a dataset about the reservations in detail, with the
+number of expected reservations, the number of visitors with the date
+coupled with the restaurant ID.
+
+``` {r names visits}
+names(visits)
+```
+
+This table concerns the reservation part of our work. Indeed we find
+the ID of the restaurants with the corresponding data with the number
+of visitors.
+
+``` {r names date_info}
+names(date_info)
+```
+
+This dataset allows us to have information on the different dates
+contained in the reservation dataset. We can know the exact day and
+if it is a vacation.
+
+``` {r names rest_info}
+names(restaurant_info)
+
+```
+
+This dataset concerns the information specific to the restaurants we
+will analyze. We have an identification number (ID) for each
+restaurant and information about the type of restaurant and its
+location.
 
 
 
 # Analysis
 
+First of all we start read the database from mysql using the library RMysql
+
+library(RMySQL)
+
+
+mydb <- dbConnect(
+  MySQL(), 
+  user="newuser",
+  password="will-20",
+  dbname="ITDAproject",
+  host="127.0.0.1"
+)
+
+dbListTables(mydb)
+
+air_reserve <- dbGetQuery(mydb, 
+"
+SELECT R.*, RI.*
+FROM air_reserve R left JOIN restaurant_info RI USING(ID);
+")
+
+air_visit <- dbGetQuery(mydb, 
+                        "
+SELECT V.*, RI.*
+FROM air_visit V left JOIN restaurant_info RI USING(ID);
+")
+date_info <- dbGetQuery(mydb, 
+                        "
+SELECT * 
+FROM date_info;
+")
+restaurant_info <- dbGetQuery(mydb, 
+                              "
+SELECT * 
+FROM restaurant_info;
+")
+
+# It's polite to let the database know when you're done
+dbDisconnect(mydb)
+
+library(tidyverse)
+
+glimpse(air_reserve)
+glimpse(air_visit)
+glimpse(date_info)
+glimpse(restaurant_info)
+
+# We will now write the csv files that we will use in the rest of the analysis
+
+write.csv(air_reserve,"reservation_data.csv")
+write.csv(air_visit,"visit_data.csv")
+write.csv(date_info,"date_info.csv")
+write.csv(restaurant_info,"restaurant_info.csv")
+#########################################################################
 ## Step 1 - read in the dataset
 
 ```{r}
@@ -476,5 +568,38 @@ rsquared
 
 
 ```
+
+###### Trying a new model
+
+Considering visti date time instead of reserve date time to not lose information relate to the future
+
+```{r}
+reservations<- reservations%>%mutate(day_reservation = day(reservations$visit_datetime))
+reservations<- reservations%>%mutate(month_reservation = month(reservations$visit_datetime))
+reservations<- reservations%>%mutate(year_reservation = 2017)
+reservations<- reservations%>%mutate(date = '')
+
+reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
+
+reservation_per_day <- reservations %>%
+  mutate(day_mon_rest=paste(day_reservation,month_reservation,ID))%>%
+  group_by(ID,day_mon_rest,date) %>%
+  summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
+            count_of_reservations = n())
+
+combinedDataset$count_of_reservations[is.na(combinedDataset$count_of_reservations)] <- 0
+combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_day_from_Reservations)] <- 0
+
+mod5up<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name+count_of_reservations+Tot_visit_day_from_Reservations, data=combinedDataset)
+summary(mod5)
+
+submission <- submission %>% left_join(restaurant_info %>% select(-X),by="ID") %>% left_join(date_info %>% mutate(date = calendar_date),by="date")%>% left_join(reservation_per_day,by=c("ID", "date"))
+
+submission$count_of_reservations[is.na(submission$count_of_reservations)] <- 0
+submission$Tot_visit_day_from_Reservations[is.na(submission$Tot_visit_day_from_Reservations)] <- 0
+
+submission$visitors <- predict(mod5up, newdata = submission)
+```
+
 
 
