@@ -8,7 +8,11 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = F,warning = F)
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
 ```
 
 # Introduction
@@ -17,44 +21,6 @@ knitr::opts_chunk$set(echo = TRUE, message = F,warning = F)
 
 For this project, we need to forecast the number of customers expected for the different restaurants in our data set. We have a certain amount of information about these restaurants like reservations, dates with the number of customers and reservations
 etc... So we will make this prediction using different model (i.e. linear, decision tree and raandom forest model)
-
-## Dataset
-
-In this part we will become aware of the differents dataset we have at our disposal :
-
-``` {r names res}
-names(reservations)
-```
-
-First we have a dataset about the reservations in detail, with the
-number of expected reservations, the number of visitors with the date
-coupled with the restaurant ID.
-
-``` {r names visits}
-names(visits)
-```
-
-This table concerns the reservation part of our work. Indeed we find
-the ID of the restaurants with the corresponding data with the number
-of visitors.
-
-``` {r names date_info}
-names(date_info)
-```
-
-This dataset allows us to have information on the different dates
-contained in the reservation dataset. We can know the exact day and
-if it is a vacation.
-
-``` {r names rest_info}
-names(restaurant_info)
-
-```
-
-This dataset concerns the information specific to the restaurants we
-will analyze. We have an identification number (ID) for each
-restaurant and information about the type of restaurant and its
-location.
 
 
 
@@ -125,6 +91,47 @@ restaurant_info <- read.csv("restaurant_info.csv")
 ```
 
 All the relevant data is read in - we started from a point where we ran SQL queries to get the restaurant information into the reservations and visits tables but need to do some variable manipulation to align the dates to get the date information to a point where we can join as some datasets store the date in different ways. For this we will use the **lubridate** package in R.
+
+
+## Dataset
+
+In this part we will become aware of the differents dataset we have at our disposal :
+
+``` {r names res}
+names(reservations)
+```
+
+First we have a dataset about the reservations in detail, with the
+number of expected reservations, the number of visitors with the date
+coupled with the restaurant ID.
+
+``` {r names visits}
+names(visits)
+```
+
+This table concerns the reservation part of our work. Indeed we find
+the ID of the restaurants with the corresponding data with the number
+of visitors.
+
+``` {r names date_info}
+names(date_info)
+```
+
+This dataset allows us to have information on the different dates
+contained in the reservation dataset. We can know the exact day and
+if it is a vacation.
+
+``` {r names rest_info}
+names(restaurant_info)
+
+```
+
+This dataset concerns the information specific to the restaurants we
+will analyze. We have an identification number (ID) for each
+restaurant and information about the type of restaurant and its
+location.
+
+
 
 ## Load relevant packages for analysis
 
@@ -202,6 +209,8 @@ Now we've created a summarized version of the reservation dataset and we need to
 ```{r}
 visits <- visits %>% add_row(ID="restaurant_ 292",air_genre_name="Cafe/Sweets",air_area_name="T?ky?-to Shibuya-ku Shibuya",latitude=35.66178,longitude=139.7041) %>% add_row(ID="restaurant_ 325",air_genre_name="Cafe/Sweets",air_area_name="Hokkaid? Sapporo-shi Minami 3 J?nishi",latitude=43.05546,longitude=141.341)
 
+date_info$calendar_date=ymd(date_info$calendar_date)
+
 combinedDataset <- visits %>% mutate(date = visit_date) %>%  left_join(reservation_per_day,by = c('date','ID')) %>%
   mutate(calendar_date=date) %>% left_join(date_info,by='calendar_date')
 
@@ -212,8 +221,6 @@ combinedDataset <- combinedDataset %>% left_join(
 by="air_genre_name")
 
 
-
-skimr::skim(combinedDataset)
 ```
 
 Create Training and test
@@ -229,10 +236,6 @@ This is a simpler modeling technique and we want to start here to see if by chan
 
 ### Model 1
 ```{r}
-
-skimr::skim(combinedDataset)
-
-names(combinedDataset)
 
 mod1<-lm(visitors ~ date + air_genre_name+latitude+longitude+count_of_reservations, data=trainset)
 
@@ -365,18 +368,11 @@ submission[1,4]
 submission$id <- str_trim(submission$id)
 submission[1,4]
 
-print('submission')
-names(submission)
-print('combined')
-names(combinedDataset)
 submission<-rename(submission,id=ID,date=date1,ID=id)
-head(submission)
-head(combinedDataset)
+
 submission$counter <- seq(from=1,to=15770,by=1) 
 
-skimr::skim(submission)
-
-submission <- submission %>% left_join(restaurant_info %>% select(-X),by="ID") %>% left_join(date_info %>% mutate(date = calendar_date),by="date")
+submission <- submission %>% left_join(restaurant_info, by="ID") %>% left_join(date_info %>% mutate(date = ymd(calendar_date)),by="date")
 
 submission %>% pull(ID) %>% unique() %>%length() 
 restaurant_info %>% pull(ID) %>% unique() %>%length() 
@@ -419,19 +415,6 @@ submission %>% write_csv("project6_data_submission.csv")
 
 ```
 
-factor ID has new levels restaurant_ 292, restaurant_ 325
-
-submission <- submission %>% left_join(combinedDataset %>% select(-visit_date,-visitors,-date,-day_mon_rest,-Tot_visit_day_from_Reservations,-count_of_reservations,-X.x,-X.y,-calendar_date,-ID.1),by="ID")
-
-mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=combinedDataset)
-summary(mod5)
-
-
-######################Breaks rules of testing with the testset included in the model - need to move before we use the combined dataset##########################
-```{r}
-
-```
-######################Breaks rules of testing with the testset included in the model - need to move before we use the combined dataset##########################
 
 
 ## Now let's explore decision tree fits
@@ -444,7 +427,7 @@ library(tidymodels)
 
 set.seed(42)
 
-combinedDataset=combinedDataset%>%select(-X.x,-ID.1,-day_mon_rest,-Tot_visit_day_from_Reservations,-count_of_reservations)
+combinedDataset=combinedDataset%>%select(-X.y)
 
 data_split <- initial_time_split(combinedDataset, prop = 0.75)
 
@@ -501,12 +484,12 @@ rf_fit
 
 
 ```{r}
-results_train <- lm_fit %>%
-  predict(new_data = nfl_train) %>%
-  mutate(
-    truth = nfl_train$weekly_attendance,
-    model = "rf"
-  )
+# results_train <- lm_fit %>%
+#   predict(new_data = nfl_train) %>%
+#   mutate(
+#     truth = nfl_train$weekly_attendance,
+#     model = "rf"
+#   )
 
 ```
 
@@ -524,12 +507,12 @@ Train<- subset(combinedDataset, split == TRUE)
 Test<- subset(combinedDataset, split == FALSE)
 
 
-firsttree <- rpart(
-  formula = visitors ~ ID+visit_date+air_area_name+latitude+longitude+air_genre_name+avgDailyVisitsGenre+date+Tot_visit_day_from_Reservations+count_of_reservations,
-  data    = Train,
-  method  = "anova"
-  )
-firsttree
+# firsttree <- rpart(
+#   formula = visitors ~ ID+visit_date+air_area_name+latitude+longitude+air_genre_name+avgDailyVisitsGenre+date+count_of_reservations,
+#   data    = Train,
+#   method  = "anova"
+#   )
+# firsttree
 
 ```
 
@@ -537,34 +520,34 @@ firsttree
 
 ```{r}
 
-Test2<- Test%>%filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")%>%arrange(ID)
-predtree <- predict(firsttree, newdata=Test2)
-## Test set filtered above
-
-#Calculation of SSE
-
-Test2=Test2 %>%arrange(ID)
-
-Test2$visitors%>%length()
-
-predtree%>%length()
-
-
-sse<-sum((Test2$visitors-predtree)^2)
-
-#Calculation of the average of Tot visi per day in the Test set
-
-ybar<- mean(Test2$visitors)
-
-#Calculation of SST
-
-sst<-sum((Test2$visitors-ybar)^2)
-
-#Calculation of R-squared
-
-rsquared<- (1-(sse/sst))
-
-rsquared
+# Test2<- Test%>%filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")%>%arrange(ID)
+# predtree <- predict(firsttree, newdata=Test2)
+# ## Test set filtered above
+# 
+# #Calculation of SSE
+# 
+# Test2=Test2 %>%arrange(ID)
+# 
+# Test2$visitors%>%length()
+# 
+# predtree%>%length()
+# 
+# 
+# sse<-sum((Test2$visitors-predtree)^2)
+# 
+# #Calculation of the average of Tot visi per day in the Test set
+# 
+# ybar<- mean(Test2$visitors)
+# 
+# #Calculation of SST
+# 
+# sst<-sum((Test2$visitors-ybar)^2)
+# 
+# #Calculation of R-squared
+# 
+# rsquared<- (1-(sse/sst))
+# 
+# rsquared
 
 
 ```
@@ -587,18 +570,18 @@ reservation_per_day <- reservations %>%
   summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
             count_of_reservations = n())
 
-combinedDataset$count_of_reservations[is.na(combinedDataset$count_of_reservations)] <- 0
-combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_day_from_Reservations)] <- 0
+# combinedDataset$count_of_reservations[is.na(combinedDataset$count_of_reservations)] <- 0
+# combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_day_from_Reservations)] <- 0
 
 mod5up<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name+count_of_reservations+Tot_visit_day_from_Reservations, data=combinedDataset)
 summary(mod5)
 
-submission <- submission %>% left_join(restaurant_info %>% select(-X),by="ID") %>% left_join(date_info %>% mutate(date = calendar_date),by="date")%>% left_join(reservation_per_day,by=c("ID", "date"))
+submission <- submission %>% mutate(calendar_date = ymd(str_sub(ID,-10,-1))) %>% mutate(ID = str_sub(ID,1,-13)) %>% left_join(restaurant_info ,by="ID") %>% left_join(date_info ,by="calendar_date")%>% left_join(reservation_per_day %>% mutate(calendar_date=date),by=c("ID", "calendar_date"))
 
 submission$count_of_reservations[is.na(submission$count_of_reservations)] <- 0
 submission$Tot_visit_day_from_Reservations[is.na(submission$Tot_visit_day_from_Reservations)] <- 0
 
-submission$visitors <- predict(mod5up, newdata = submission)
+# submission$visitors <- predict(mod5up, newdata = submission)
 ```
 
 
