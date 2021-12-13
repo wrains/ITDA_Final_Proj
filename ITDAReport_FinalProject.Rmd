@@ -136,21 +136,6 @@ This dataset concerns the information specific to the restaurants we
 will analyze. We have an identification number (ID) for each
 restaurant and information about the type of restaurant and its
 location.
-# Plot relate the different table
-**table visits**
-The below graph will show us the overall total visitors per day
-```{r}
- visits %>%
-  group_by(visit_date) %>%
-  summarise(all_visitors = sum(visitors)) %>%
-  ggplot(aes(x=visit_date,y=all_visitors)) +
-  geom_line(col = "blue") +
-  labs(x = "Visit date", y = "Total viusitors per day")+
-  theme_minimal()
-```
-
-
-
 
 ## Load relevant packages for analysis
 
@@ -158,7 +143,127 @@ The below graph will show us the overall total visitors per day
 library(tidyverse)
 library(lubridate)
 library(ggplot2)
+library(leaflet)
 ```
+
+
+# Plot relate the different table
+
+
+**table visits**
+
+-  The below graph will show us the overall total visitors per day  
+
+```{r}
+ visits %>%
+  group_by(visit_date) %>%
+  summarise(all_visitors = sum(visitors)) %>%
+  ggplot(aes(x=visit_date,y=all_visitors)) +
+  geom_line(col = "blue") +
+  labs(x = "Visit date", y = "Total viusitors",title = "Total visitors per day")+
+  theme_minimal()
+```
+We can easily see that we have an increasing trend during the time, and we can also en-light the fact that during the week we always have a peak which is in correspondence of the weekend.
+
+-  The below graph will show the total mean visitors per day of the week  
+
+
+```{r}
+  visits %>%
+  mutate(week_day = wday(visit_date, label = TRUE, week_start = 1)) %>%
+  group_by(week_day) %>% 
+  drop_na()%>%
+  summarise(visits = mean(visitors)) %>%
+  ggplot(aes(week_day, visits, fill = week_day)) +
+  geom_col() +
+  theme(legend.position = "none") +
+  labs(x = "Day of the week", y = "Mean visitors", title = "Mean visitors per day of the week") 
+```
+
+From the result we can easily see that the day with the higher mean fall during the Friday, Saturday and Sunday. While the day with the lower mean are Monday and Tuesday.
+
+-  The below graph will show the total mean visitors per month  
+
+```{r}
+  visits %>%
+  mutate(month = month(visit_date, label = TRUE)) %>%
+  group_by(month) %>%
+  drop_na()%>%
+  summarise(visits = mean(visitors)) %>%
+  ggplot(aes(month, visits, fill = month)) +
+  geom_col() +
+  theme(legend.position = "none") +
+  labs(x = "Month", y = "Mean visitors", title= "Total mean visitors per month")
+
+```
+
+**Reservation**
+
+```{r}
+reservations_graph <- reservations %>%
+  mutate(reserve_date = date(reserve_datetime),
+         reserve_hour = hour(reserve_datetime),
+         reserve_wday = wday(reserve_datetime, label = TRUE, week_start = 1),
+         visit_date = date(visit_datetime),
+         visit_hour = hour(visit_datetime),
+         visit_wday = wday(visit_datetime, label = TRUE, week_start = 1),
+         
+         )
+
+reservations_graph %>%
+  group_by(visit_hour) %>%
+  drop_na() %>%
+  summarise(total_visitors = sum(reserve_visitors)) %>%
+  ggplot(aes(visit_hour, total_visitors)) +
+  geom_col(fill="orange")
+```
+
+From this graph we can easily see that the majority of the client usually do reservation for the evening. Between hour five and ten we can see that we don't have value principally relate to the fact that restaurant at those time are closed.
+
+**Restaurant Info**
+
+Plotting the position of the different restaurant
+
+```{r}
+leaflet(restaurant_info) %>%
+  addTiles() %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addMarkers(~longitude, ~latitude,
+             popup = ~ID, label = ~air_genre_name,
+             clusterOptions = markerClusterOptions())
+```
+
+The map show us that many restaurants share common coordinates, since those coordinates refer to the area of the restaurant. By clicking on the clusters they will break  into smaller clusters and at the end into the individual restaurants, which are labelled by their genre name . If we click on the single markers we will able to visualize the id of each restaurant in the cluster.
+
+-  Let's have a look on the genre name frequency
+```{r}
+reservations %>%
+  group_by(air_genre_name) %>%
+  count() %>%
+  ggplot(aes(air_genre_name, n, fill = air_genre_name)) +
+  geom_col() +
+  theme(legend.position = "none",axis.text.x  = element_text(angle=45, hjust=1, vjust=0.9))+
+  labs(x = "Air genre name", y = "Number of genre restaurants")
+
+```
+
+
+-  Let's have a look on the frequency of restaurant in the different area  
+######take a look
+```{r}
+restaurant_info %>%
+  group_by(air_area_name) %>%
+  count() %>%
+  ungroup() %>%
+  top_n(15,n) %>%
+  ggplot(aes(reorder(air_area_name, n, FUN = min) ,n, fill = air_area_name)) +
+  geom_col() +
+  theme(legend.position = "none") +
+  coord_flip() +
+  labs(x = "Top 15 areas (air_area_name)", y = "Number of restaurants in an area")
+```
+
+
 
 ## Examine the variables in the datasets
 
