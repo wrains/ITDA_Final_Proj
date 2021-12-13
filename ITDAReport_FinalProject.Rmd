@@ -17,10 +17,16 @@ knitr::opts_chunk$set(
 
 # Introduction
 
+Running a thriving local restaurant is not always as charming as first impressions appear. There are often all sorts of unexpected troubles popping up that could hurt business. One common predicament is that restaurants need to know how many customers to expect each day to effectively purchase ingredients and schedule staff members. This forecast is not easy to make because many unpredictable factors affect restaurant attendance, like weather and local competition. It is even harder for newer restaurants with little historical data.
+In this task, you are challenged to use reservation and visitation data to predict the total number of visitors to a restaurant for future dates. This information will help restaurants be much more efficient and allow them to focus on creating an enjoyable dining experience for their customers.
+
 ## Problem Statement
 
-For this project, we need to forecast the number of customers expected for the different restaurants in our data set. We have a certain amount of information about these restaurants like reservations, dates with the number of customers and reservations
-etc... So we will make this prediction using different model (i.e. linear, decision tree and raandom forest model)
+In this task, we are challenged to use reservation and visitation data to predict the total number of visitors to a restaurant for future dates.
+
+ We have a certain amount of information about these restaurants like reservations, dates with the number of customers and reservations , the location of the restaurant etc... 
+ 
+ Our main objective will be to create different model that we will use to predict, (i.e. linear, decision tree and random forest model), and choose the model that seems the best one.
 
 
 
@@ -130,6 +136,19 @@ This dataset concerns the information specific to the restaurants we
 will analyze. We have an identification number (ID) for each
 restaurant and information about the type of restaurant and its
 location.
+# Plot relate the different table
+**table visits**
+The below graph will show us the overall total visitors per day
+```{r}
+ visits %>%
+  group_by(visit_date) %>%
+  summarise(all_visitors = sum(visitors)) %>%
+  ggplot(aes(x=visit_date,y=all_visitors)) +
+  geom_line(col = "blue") +
+  labs(x = "Visit date", y = "Total viusitors per day")+
+  theme_minimal()
+```
+
 
 
 
@@ -138,6 +157,7 @@ location.
 ```{r}
 library(tidyverse)
 library(lubridate)
+library(ggplot2)
 ```
 
 ## Examine the variables in the datasets
