@@ -570,18 +570,43 @@ reservation_per_day <- reservations %>%
   summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
             count_of_reservations = n())
 
-# combinedDataset$count_of_reservations[is.na(combinedDataset$count_of_reservations)] <- 0
-# combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_day_from_Reservations)] <- 0
+combinedDataset$count_of_reservations[is.na(combinedDataset$count_of_reservations)] <- 0
+combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_day_from_Reservations)] <- 0
 
 mod5up<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name+count_of_reservations+Tot_visit_day_from_Reservations, data=combinedDataset)
-summary(mod5)
+summary(mod5up)
 
-submission <- submission %>% mutate(calendar_date = ymd(str_sub(ID,-10,-1))) %>% mutate(ID = str_sub(ID,1,-13)) %>% left_join(restaurant_info ,by="ID") %>% left_join(date_info ,by="calendar_date")%>% left_join(reservation_per_day %>% mutate(calendar_date=date),by=c("ID", "calendar_date"))
 
-submission$count_of_reservations[is.na(submission$count_of_reservations)] <- 0
-submission$Tot_visit_day_from_Reservations[is.na(submission$Tot_visit_day_from_Reservations)] <- 0
 
-# submission$visitors <- predict(mod5up, newdata = submission)
+submission2 <- submission %>% left_join(reservation_per_day,by=c("ID", "date"))
+
+submission2$count_of_reservations[is.na(submission2$count_of_reservations)] <- 0
+submission2$Tot_visit_day_from_Reservations[is.na(submission2$Tot_visit_day_from_Reservations)] <- 0
+
+submission2$visitors <- predict(mod5up, newdata = submission2)
+submission2$visitors <- round(submission2$visitors,0)
+submission_zeroes2 <- submission_zeroes %>% select(id,visitors,counter)
+submission2 <- submission2 %>% select(id,visitors,counter)
+submission2 <-rename(submission2,ID=id)
+names(submission_zeroes2)
+submission_zeroes2 <-rename(submission_zeroes2,ID=id)
+# submission <- submission %>% add_row(ID="restaurant_ 292",visitors=0) %>% add_row(ID="restaurant_ 325",visitors=0)
+
+glimpse(submission2)
+
+submission2 <- bind_rows(submission2,submission_zeroes2) %>%arrange(counter)%>%select(-counter)
+
+skimr::skim(submission)
+
+submission2 %>% filter(str_detect(ID,"restaurant_ 292")|str_detect(ID,"restaurant_ 325"))
+
+submission2 %>% janitor::tabyl(visitors)
+
+submission2$visitors <- if_else(submission2$visitors<0,0,submission2$visitors)
+
+submission2 %>% janitor::tabyl(visitors)
+
+submission2 %>% write_csv("project6_data_submission2.csv")
 ```
 
 
