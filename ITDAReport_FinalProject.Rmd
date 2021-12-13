@@ -557,6 +557,27 @@ Test<- subset(combinedDataset, split == FALSE)
 Considering visti date time instead of reserve date time to not lose information relate to the future
 
 ```{r}
+submission2 <- read.csv("project_submission (1).csv")
+```
+
+```{r}
+submission2<-submission2%>%mutate(date1 = str_sub(ID,-10,-1))
+submission2<-submission2%>%mutate(id = str_sub(ID,1,-13))
+submission2$date1<-ymd(submission2$date1)
+head(submission2)
+submission2[1,4]
+submission2$id <- str_trim(submission2$id)
+submission2[1,4]
+
+submission2<-rename(submission2,id=ID,date=date1,ID=id)
+
+submission2$counter <- seq(from=1,to=15770,by=1) 
+
+submission2 <- submission2 %>% left_join(restaurant_info, by="ID") %>% left_join(date_info %>% mutate(date = ymd(calendar_date)),by="date")
+
+submission %>% pull(ID) %>% unique() %>%length() 
+restaurant_info %>% pull(ID) %>% unique() %>%length()
+
 reservations<- reservations%>%mutate(day_reservation = day(reservations$visit_datetime))
 reservations<- reservations%>%mutate(month_reservation = month(reservations$visit_datetime))
 reservations<- reservations%>%mutate(year_reservation = 2017)
@@ -576,20 +597,33 @@ combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_
 mod5up<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name+count_of_reservations+Tot_visit_day_from_Reservations, data=combinedDataset)
 summary(mod5up)
 
+# skimr::skim(submission2)
 
-
-submission2 <- submission %>% left_join(reservation_per_day,by=c("ID", "date"))
+submission2 <- submission2 %>% select(-date)%>%mutate(date=calendar_date) %>% select(-calendar_date) %>% left_join(reservation_per_day,by=c("ID", "date"))
 
 submission2$count_of_reservations[is.na(submission2$count_of_reservations)] <- 0
 submission2$Tot_visit_day_from_Reservations[is.na(submission2$Tot_visit_day_from_Reservations)] <- 0
 
+# skimr::skim(submission2)
+# skimr::skim(combinedDataset)
+# 
+# tail(combinedDataset)
+# submission2%>%filter(ID=="restaurant_ 292")
+
+combinedDataset %>% filter(ID=="restaurant_ 104")
+
+submission_zeroes2 <- submission2 %>% filter(ID=="restaurant_ 292"|ID=="restaurant_ 325")
+
+submission2 <- submission2 %>% filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")
+
+
 submission2$visitors <- predict(mod5up, newdata = submission2)
 submission2$visitors <- round(submission2$visitors,0)
-submission_zeroes2 <- submission_zeroes %>% select(id,visitors,counter)
-submission2 <- submission2 %>% select(id,visitors,counter)
-submission2 <-rename(submission2,ID=id)
+submission_zeroes2 <- submission_zeroes %>% select(ID,visitors,counter)
+submission2 <- submission2 %>% select(ID,visitors,counter)
+# submission2 <-rename(submission2,ID=id)
 names(submission_zeroes2)
-submission_zeroes2 <-rename(submission_zeroes2,ID=id)
+# submission_zeroes2 <-rename(submission_zeroes2,ID=id)
 # submission <- submission %>% add_row(ID="restaurant_ 292",visitors=0) %>% add_row(ID="restaurant_ 325",visitors=0)
 
 glimpse(submission2)
