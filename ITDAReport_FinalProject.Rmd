@@ -154,7 +154,7 @@ library(leaflet)
 -  The below graph will show us the overall total visitors per day  
 
 ```{r}
- visits %>%
+visits %>%
   group_by(visit_date) %>%
   summarise(all_visitors = sum(visitors)) %>%
   ggplot(aes(x=visit_date,y=all_visitors)) +
@@ -168,7 +168,7 @@ We can easily see that we have an increasing trend during the time, and we can a
 
 
 ```{r}
-  visits %>%
+visits %>%
   mutate(week_day = wday(visit_date, label = TRUE, week_start = 1)) %>%
   group_by(week_day) %>% 
   drop_na()%>%
@@ -184,7 +184,7 @@ From the result we can easily see that the day with the higher mean fall during 
 -  The below graph will show the total mean visitors per month  
 
 ```{r}
-  visits %>%
+visits %>%
   mutate(month = month(visit_date, label = TRUE)) %>%
   group_by(month) %>%
   drop_na()%>%
@@ -566,7 +566,7 @@ rf_fit <- rf_spec %>%
     data = tm_train
   )
 
-print("RF Squared")
+print("RF R-Squared")
 rf_fit$fit$r.squared
 
 
@@ -657,10 +657,6 @@ rsqUPC(trainset2,predmod6train)
 test the new fits with rsq on the test set as the above rsq was on the train set
 
 ```{r}
-
-
-
-
 #mod 6
 predictTest2<-predict(mod6, newdata = testset2)
 rsqUPC(testset2,predictTest2)
