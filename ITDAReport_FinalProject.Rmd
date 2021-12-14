@@ -69,7 +69,7 @@ SELECT *
 FROM restaurant_info;
 ")
 
-# It's polite to let the database know when you're done
+### It's polite to let the database know when you're done
 dbDisconnect(mydb)
 
 library(tidyverse)
@@ -85,7 +85,7 @@ write.csv(air_reserve,"reservation_data.csv")
 write.csv(air_visit,"visit_data.csv")
 write.csv(date_info,"date_info.csv")
 write.csv(restaurant_info,"restaurant_info.csv")
-#########################################################################
+
 ## Step 1 - read in the dataset
 
 ```{r}
@@ -224,13 +224,19 @@ From this graph we can easily see that the majority of the client usually do res
 Plotting the position of the different restaurant
 
 ```{r}
-leaflet(restaurant_info) %>%
-  addTiles() %>%
-  addProviderTiles("CartoDB.Positron") %>%
-  addMarkers(~longitude, ~latitude,
-             popup = ~ID, label = ~air_genre_name,
-             clusterOptions = markerClusterOptions())
+# leaflet(restaurant_info) %>%
+#   addTiles() %>%
+#   addProviderTiles("CartoDB.Positron") %>%
+#   addMarkers(~longitude, ~latitude,
+#              popup = ~ID, label = ~air_genre_name,
+#              clusterOptions = markerClusterOptions())
 ```
+The leaflet package only outputs HTML formats thus we will insert images from the interactive map we have generated
+
+
+![](Japan1.png) ![](Japan2.png) ![](Japan3.png)
+
+
 
 The map show us that many restaurants share common coordinates, since those coordinates refer to the area of the restaurant. By clicking on the clusters they will break  into smaller clusters and at the end into the individual restaurants, which are labelled by their genre name . If we click on the single markers we will able to visualize the id of each restaurant in the cluster.
 
@@ -248,7 +254,6 @@ reservations %>%
 
 
 -  Let's have a look on the frequency of restaurant in the different area  
-######take a look
 ```{r}
 restaurant_info %>%
   group_by(air_area_name) %>%
@@ -270,6 +275,7 @@ restaurant_info %>%
 for(data in list(reservations,visits,date_info,restaurant_info)) {
   
   print(skimr::skim(data))
+  print("------------------------------------")
 }
 
 ```
@@ -290,6 +296,7 @@ date_info$calendar_date <- ymd(date_info$calendar_date)
 
 
 ## Examine the dates in each dataset
+
 ```{r}
 tribble(
   ~"variable",                       ~"Reservation",          ~"Visits", ~"Date-Info",
@@ -306,12 +313,11 @@ tribble(
 From this output we can see the date ranges of the datasets.
 
 
-Now we will summarize by day.
+
+## Now we will summarize by day.
 
 ```{r}
 reserve_data_day_summed <- reservations %>% mutate(reserveDay = day(reserve_datetime))
-
-tail(reserve_data_day_summed)
 
 reservations<- reservations%>%mutate(day_reservation = day(reservations$reserve_datetime))
 reservations<- reservations%>%mutate(month_reservation = month(reservations$reserve_datetime))
@@ -328,6 +334,9 @@ reservation_per_day <- reservations %>%
 
 head(reservation_per_day)
 ```
+
+## Forming modeling dataset
+
 Now we've created a summarized version of the reservation dataset and we need to join this into the visits dataset to form our total dataset with all of the variables we will use
 
 ```{r}
@@ -345,7 +354,7 @@ by="air_genre_name")
 
 ```
 
-Create Training and test
+## Create Training and test
 ```{r}
 trainset <- subset(combinedDataset,visit_date <= as.Date("2017-03-10"))
 testset <- subset(combinedDataset,visit_date > as.Date("2017-03-10"))
@@ -380,7 +389,16 @@ This is a simpler modeling technique and we want to start here to see if by chan
 ```{r}
 # mod3<- lm( visitors ~ visit_date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
 # summary(mod3)
+# max rsq achieved to this point
+print(.252)
 ```
+
+#### Post Model 3 Conclusions
+
+To this point we have tried a few different iterations to fairly poor results. After this we will include ID as we think that it might be important. 
+
+Ultimately in this sort of modeling situation, the restaurant themselves will have an effect on the final visitor total. Think of this similar to a sports team or predicting attendance for La Liga, the team being predicted will no doubt be one of the largest predictors.
+
 
 ### Model 4
 
@@ -392,139 +410,117 @@ This is a simpler modeling technique and we want to start here to see if by chan
 
 ### Model 5 
 
-```{r}
-mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
-summary(mod5)
-
-```
-
-### Model 6
+Another few iterations - we realized that visit date wouldn't be of any use for the dataset we are predicting (and would make the model not usable), thus we've swapped it for **day_of_week**.
 
 ```{r}
-# mod6<- lm( visitors ~  visit_date + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
-# summary(mod6)
+# mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
+# summary(mod5)
+
 ```
-
-
 
 # validation of the model
 
-```{r}
-predictTest<-predict(mod5, newdata = (testset%>%filter(ID!="restaurant_ 514"&ID!="restaurant_ 516"&ID!="restaurant_ 573")%>%arrange(ID)))
-
-#Calculation of SSE
-
-testset=testset %>%arrange(ID)
-
-testset$visitors%>%length()
-
-predictTest%>%length()
-
-
-sse<-sum((testset$visitors-predictTest)^2)
-
-#Calculation of the average of Tot visi per day in the Test set
-
-ybar<- mean(testset$visitors)
-
-#Calculation of SST
-
-sst<-sum((testset$visitors-ybar)^2)
-
-#Calculation of R-squared
-
-rsquared<- (1-(sse/sst))
-
-rsquared
-
-############### Method from below may work here but something needs to be fixed with the datasets
-
-names(testset)
-testset<-testset%>%filter(ID!="restaurant_ 514",ID!="restaurant_ 516",ID!="restaurant_ 573")
-predictTest1<-predict(mod5, newdata = testset)
-
-#Calculation of SSE
-
-sse<-sum((testset$visitors-predictTest1)^2)
-
-#Calculation of the average of Tot visi per day in the Test set
-
-ybar2<- mean(testset$visitors)
-
-#Calculation of SST
-
-sst<-sum((testset$visitors-ybar2)^2)
-
-#Calculation of R-squared
-
-rsquared2<- (1-(sse/sst))
-
-rsquared2
+```{r 1st Validation Block,include=FALSE}
+# predictTest<-predict(mod5, newdata = (testset%>%filter(ID!="restaurant_ 514"&ID!="restaurant_ 516"&ID!="restaurant_ 573")%>%arrange(ID)))
+# 
+# #Calculation of SSE
+# 
+# testset=testset %>%arrange(ID)
+# 
+# testset$visitors%>%length()
+# 
+# predictTest%>%length()
+# 
+# 
+# sse<-sum((testset$visitors-predictTest)^2)
+# 
+# #Calculation of the average of Tot visi per day in the Test set
+# 
+# ybar<- mean(testset$visitors)
+# 
+# #Calculation of SST
+# 
+# sst<-sum((testset$visitors-ybar)^2)
+# 
+# #Calculation of R-squared
+# 
+# rsquared<- (1-(sse/sst))
+# 
+# rsquared
+# 
+# ############### Method from below may work here but something needs to be fixed with the datasets
+# 
+# testset<-testset%>%filter(ID!="restaurant_ 514",ID!="restaurant_ 516",ID!="restaurant_ 573")
+# predictTest1<-predict(mod5, newdata = testset)
+# 
+# #Calculation of SSE
+# 
+# sse<-sum((testset$visitors-predictTest1)^2)
+# 
+# #Calculation of the average of Tot visi per day in the Test set
+# 
+# ybar2<- mean(testset$visitors)
+# 
+# #Calculation of SST
+# 
+# sst<-sum((testset$visitors-ybar2)^2)
+# 
+# #Calculation of R-squared
+# 
+# rsquared2<- (1-(sse/sst))
+# 
+# rsquared2
 
 
 
 ```
 
-##################NEEED TO FIX - TEST SET AND PREDICTION NOT THE SAME IN THIS CASE
+```{r 1st Prediction Output,include=FALSE}
+# submission <- read.csv("project_submission (1).csv")
 
-## Refitting LM model with full dataset
-
-Now that we've tested with a train test split we want to reload the best LM model with the full dataset so that we don't drop levels when we predict the submission dataset.
-
-```{r}
-mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=combinedDataset)
-summary(mod5)
-```
-
-
-```{r}
-submission <- read.csv("project_submission (1).csv")
-```
-
-```{r}
-submission<-submission%>%mutate(date1 = str_sub(ID,-10,-1))
-submission<-submission%>%mutate(id = str_sub(ID,1,-13))
-submission$date1<-ymd(submission$date1)
-head(submission)
-submission[1,4]
-submission$id <- str_trim(submission$id)
-submission[1,4]
-
-submission<-rename(submission,id=ID,date=date1,ID=id)
-
-submission$counter <- seq(from=1,to=15770,by=1) 
-
-submission <- submission %>% left_join(restaurant_info, by="ID") %>% left_join(date_info %>% mutate(date = ymd(calendar_date)),by="date")
-
-submission %>% pull(ID) %>% unique() %>%length() 
-restaurant_info %>% pull(ID) %>% unique() %>%length() 
-
-
-submission_zeroes <- submission %>% filter(ID=="restaurant_ 292"|ID=="restaurant_ 325")
-
-submission <- submission %>% filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")
-
-
-submission$visitors <- predict(mod5, newdata = submission)
-submission$visitors <- round(submission$visitors,0)
-submission_zeroes <- submission_zeroes %>% select(id,visitors,counter)
-submission <- submission %>% select(id,visitors,counter)
-submission <-rename(submission,ID=id)
-names(submission_zeroes)
-submission_zeroes <-rename(submission_zeroes,ID=id)
-# submission <- submission %>% add_row(ID="restaurant_ 292",visitors=0) %>% add_row(ID="restaurant_ 325",visitors=0)
-
-submission <- bind_rows(submission,submission_zeroes) %>%arrange(counter)%>%select(-counter)
-
-submission %>% filter(str_detect(ID,"restaurant_ 292")|str_detect(ID,"restaurant_ 325"))
-
-submission %>% janitor::tabyl(visitors)
-
-submission$visitors <- if_else(submission$visitors<0,0,submission$visitors)
-
-submission %>% janitor::tabyl(visitors)
-
-submission %>% write_csv("project6_data_submission.csv")
+# submission<-submission%>%mutate(date1 = str_sub(ID,-10,-1))
+# submission<-submission%>%mutate(id = str_sub(ID,1,-13))
+# submission$date1<-ymd(submission$date1)
+# head(submission)
+# submission[1,4]
+# submission$id <- str_trim(submission$id)
+# submission[1,4]
+# 
+# submission<-rename(submission,id=ID,date=date1,ID=id)
+# 
+# submission$counter <- seq(from=1,to=15770,by=1) 
+# 
+# submission <- submission %>% left_join(restaurant_info, by="ID") %>% left_join(date_info %>% mutate(date = ymd(calendar_date)),by="date")
+# 
+# submission %>% pull(ID) %>% unique() %>%length() 
+# restaurant_info %>% pull(ID) %>% unique() %>%length() 
+# 
+# 
+# submission_zeroes <- submission %>% filter(ID=="restaurant_ 292"|ID=="restaurant_ 325")
+# 
+# submission <- submission %>% filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")
+# 
+# 
+# submission$visitors <- predict(mod5, newdata = submission)
+# submission$visitors <- round(submission$visitors,0)
+# submission_zeroes <- submission_zeroes %>% select(id,visitors,counter)
+# submission <- submission %>% select(id,visitors,counter)
+# submission <-rename(submission,ID=id)
+# names(submission_zeroes)
+# submission_zeroes <-rename(submission_zeroes,ID=id)
+# # submission <- submission %>% add_row(ID="restaurant_ 292",visitors=0) %>% add_row(ID="restaurant_ 325",visitors=0)
+# 
+# submission <- bind_rows(submission,submission_zeroes) %>%arrange(counter)%>%select(-counter)
+# 
+# submission %>% filter(str_detect(ID,"restaurant_ 292")|str_detect(ID,"restaurant_ 325"))
+# 
+# submission %>% janitor::tabyl(visitors)
+# 
+# submission$visitors <- if_else(submission$visitors<0,0,submission$visitors)
+# 
+# submission %>% janitor::tabyl(visitors)
+# 
+# submission %>% write_csv("project6_data_submission.csv")
 
 ```
 
@@ -532,11 +528,15 @@ submission %>% write_csv("project6_data_submission.csv")
 
 ## Now let's explore decision tree fits
 
-Now we specify and then fit the models.
+We will now use a very powerful supervised learning algorithm **random forest** to try and fit to our model and see how it performs. It is an extrapolation of a decision tree algorithm. 
 
 
 ```{r}
 library(tidymodels)
+
+combinedDataset=combinedDataset %>% left_join(combinedDataset%>%group_by(ID,day_of_week)%>%summarise(avg_of_day_id=mean(visitors)),by=c("ID","day_of_week"))
+
+
 
 set.seed(42)
 
@@ -554,12 +554,6 @@ tm_rec <- tm_train %>%
 # Show the result of our recipe
 tm_rec 
 
-```
-To combine the data preparation with the model building, we use the **workflows**.
-
-
-
-```{r}
 rf_spec <- rand_forest(mode = "regression") %>%
   set_engine("ranger")
 
@@ -572,124 +566,133 @@ rf_fit <- rf_spec %>%
     data = tm_train
   )
 
-rf_fit
-
-# results_train <- rf_fit %>%
-#     predict(new_data = tm_train) %>%
-#     mutate(
-#       truth = tm_train$visitors,
-#       model = "rf"
-#     )
-# 
-# results_test <- rf_fit %>%
-#     predict(new_data = tm_test) %>%
-#     mutate(
-#       truth = tm_test$visitors,
-#       model = "rf"
-#     )
-
+print("RF Squared")
+rf_fit$fit$r.squared
 
 
 ```
 
-
-
-
-
-```{r}
-# results_train <- lm_fit %>%
-#   predict(new_data = nfl_train) %>%
-#   mutate(
-#     truth = nfl_train$weekly_attendance,
-#     model = "rf"
-#   )
-
-```
-
-##########
 
 # Creation of the regression tree with training set
+
+We invoke 3 new packages to be able to run the decision tree method
 
 ```{r}
 library(rpart)
 library(rpart.plot)
 library(caTools)
 
-split <- sample.split(combinedDataset$visitors, SplitRatio = 0.85)
-Train<- subset(combinedDataset, split == TRUE)
-Test<- subset(combinedDataset, split == FALSE)
+set.seed(122)
+
+combinedDataset$ID=as.factor(combinedDataset$ID)
+combinedDataset$air_genre_name=as.factor(combinedDataset$air_genre_name)
+combinedDataset$air_area_name=as.factor(combinedDataset$air_area_name)
+combinedDataset=combinedDataset%>%select(-day_mon_rest)
+
+combinedDataset$count_of_reservations[is.na(combinedDataset$count_of_reservations)] <- 0
+combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_day_from_Reservations)] <- 0
+
+trainset2 <- subset(combinedDataset,visit_date <= as.Date("2017-03-10"))
+testset2 <- subset(combinedDataset,visit_date > as.Date("2017-03-10"))
 
 
-# firsttree <- rpart(
-#   formula = visitors ~ ID+visit_date+air_area_name+latitude+longitude+air_genre_name+avgDailyVisitsGenre+date+count_of_reservations,
-#   data    = Train,
-#   method  = "anova"
-#   )
-# firsttree
+
+firsttree <- rpart(
+  formula = visitors ~ ID + air_area_name + latitude + longitude + air_genre_name+ avgDailyVisitsGenre + count_of_reservations + avg_of_day_id,
+  data    = trainset2,
+  method  = "anova"
+  )
+firsttree
 
 ```
 
 #Validation with the test set
 
-```{r}
+```{r Validation of the tree with in class method,include=FALSE}
 
-# Test2<- Test%>%filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")%>%arrange(ID)
-# predtree <- predict(firsttree, newdata=Test2)
-# ## Test set filtered above
-# 
-# #Calculation of SSE
-# 
-# Test2=Test2 %>%arrange(ID)
-# 
-# Test2$visitors%>%length()
-# 
-# predtree%>%length()
-# 
-# 
-# sse<-sum((Test2$visitors-predtree)^2)
-# 
-# #Calculation of the average of Tot visi per day in the Test set
-# 
-# ybar<- mean(Test2$visitors)
-# 
-# #Calculation of SST
-# 
-# sst<-sum((Test2$visitors-ybar)^2)
-# 
-# #Calculation of R-squared
-# 
-# rsquared<- (1-(sse/sst))
-# 
-# rsquared
+testset2=testset2%>%filter(ID!="restaurant_ 514"&ID!="restaurant_ 516"&ID!="restaurant_ 573")
+
+predtree <- predict(firsttree, newdata=testset2)
+## Test set filtered above
+
+# rsq function 
+
+rsqUPC = function(test,pred) {
+sse<-sum((test$visitors-pred)^2)
+ybar<- mean(test$visitors)
+sst<-sum((test$visitors-ybar)^2)
+rsquared<- (1-(sse/sst))
+  return(rsquared)
+}
+
+
+rsqUPC(testset2,predtree)
 
 
 ```
 
-###### Trying a new model
 
-Considering visti date time instead of reserve date time to not lose information relate to the future
+
+
+
+## Now we will consider again LM with all of the variables that we've now developed
+
+Considering visit date time instead of reserve date time to not lose information relate to the future
+
 
 ```{r}
+
+
+
+mod6=lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name + count_of_reservations + Tot_visit_day_from_Reservations + avg_of_day_id, data=trainset2)
+# summary(mod6)
+#We will print the rsq instead of printing the summary to conciseness of the report
+
+predmod6train <- predict(firsttree, data=trainset2)
+#rsq
+rsqUPC(trainset2,predmod6train)
+
+```
+
+test the new fits with rsq on the test set as the above rsq was on the train set
+
+```{r}
+
+
+
+
+#mod 6
+predictTest2<-predict(mod6, newdata = testset2)
+rsqUPC(testset2,predictTest2)
+
+```
+
+Here we see quite a close result to the original meaning that we can expect a similar performance in the wild if you will. As a part of the next steps we will retrain the model inclusive of the test set data as we would otherwise lose some levels otherwise based on our setup.
+
+
+## Refitting LM model with full dataset
+
+Now that we've tested with a train test split we want to reload the best LM model with the full dataset so that we don't drop levels when we predict the submission dataset.
+
+We also undergo a series of steps here to get the variables that we need into the submission dataset to achieve an accurate prediction. We also ensure that we maintain the original sequence which seems entirely random.
+
+
+
+```{r FINAL Submission}
 submission2 <- read.csv("project_submission (1).csv")
-```
 
-```{r}
 submission2<-submission2%>%mutate(date1 = str_sub(ID,-10,-1))
 submission2<-submission2%>%mutate(id = str_sub(ID,1,-13))
 submission2$date1<-ymd(submission2$date1)
-head(submission2)
-submission2[1,4]
 submission2$id <- str_trim(submission2$id)
-submission2[1,4]
 
 submission2<-rename(submission2,id=ID,date=date1,ID=id)
 
 submission2$counter <- seq(from=1,to=15770,by=1) 
 
-submission2 <- submission2 %>% left_join(restaurant_info, by="ID") %>% left_join(date_info %>% mutate(date = ymd(calendar_date)),by="date")
+submission2$ID=as.factor(submission2$ID)
 
-submission %>% pull(ID) %>% unique() %>%length() 
-restaurant_info %>% pull(ID) %>% unique() %>%length()
+submission2 <- submission2 %>% left_join(restaurant_info%>%select(-X), by="ID") %>% left_join(date_info %>% mutate(date = ymd(calendar_date)),by="date") %>% left_join(combinedDataset %>% select(ID,day_of_week,avg_of_day_id)%>%distinct(),by=c("ID","day_of_week"))
 
 reservations<- reservations%>%mutate(day_reservation = day(reservations$visit_datetime))
 reservations<- reservations%>%mutate(month_reservation = month(reservations$visit_datetime))
@@ -699,272 +702,212 @@ reservations<- reservations%>%mutate(date = '')
 reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
 
 reservation_per_day <- reservations %>%
-  mutate(day_mon_rest=paste(day_reservation,month_reservation,ID))%>%
-  group_by(ID,day_mon_rest,date) %>%
+  group_by(ID,date) %>%
   summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
             count_of_reservations = n())
 
-combinedDataset$count_of_reservations[is.na(combinedDataset$count_of_reservations)] <- 0
-combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_day_from_Reservations)] <- 0
+reservation_per_day$ID=as.factor(reservation_per_day$ID)
 
-mod5up<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name+count_of_reservations+Tot_visit_day_from_Reservations, data=combinedDataset)
-summary(mod5up)
+mod6<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name + count_of_reservations + Tot_visit_day_from_Reservations + avg_of_day_id, data=combinedDataset)
+predictTest2<-predict(mod6, newdata = combinedDataset)
+##quick rsq calculation on model
+rsqUPC(combinedDataset,predictTest2)
 
-# skimr::skim(submission2)
-
-submission2 <- submission2 %>% select(-date)%>%mutate(date=calendar_date) %>% select(-calendar_date) %>% left_join(reservation_per_day,by=c("ID", "date"))
+submission2 <- submission2 %>% select(-date)%>%mutate(date=ymd(calendar_date)) %>% select(-calendar_date) %>% left_join(reservation_per_day,by=c("date", "ID"))
 
 submission2$count_of_reservations[is.na(submission2$count_of_reservations)] <- 0
 submission2$Tot_visit_day_from_Reservations[is.na(submission2$Tot_visit_day_from_Reservations)] <- 0
-
-# skimr::skim(submission2)
-# skimr::skim(combinedDataset)
-# 
-# tail(combinedDataset)
-# submission2%>%filter(ID=="restaurant_ 292")
-
-combinedDataset %>% filter(ID=="restaurant_ 104")
+submission2$avg_of_day_id[is.na(submission2$avg_of_day_id)] <- 0
 
 submission_zeroes2 <- submission2 %>% filter(ID=="restaurant_ 292"|ID=="restaurant_ 325")
 
 submission2 <- submission2 %>% filter(ID!="restaurant_ 292"&ID!="restaurant_ 325")
 
 
-submission2$visitors <- predict(mod5up, newdata = submission2)
+submission2$visitors <- predict(mod6, newdata = submission2)
 submission2$visitors <- round(submission2$visitors,0)
-submission_zeroes2 <- submission_zeroes %>% select(ID,visitors,counter)
-submission2 <- submission2 %>% select(ID,visitors,counter)
-# submission2 <-rename(submission2,ID=id)
-names(submission_zeroes2)
-# submission_zeroes2 <-rename(submission_zeroes2,ID=id)
-# submission <- submission %>% add_row(ID="restaurant_ 292",visitors=0) %>% add_row(ID="restaurant_ 325",visitors=0)
-
-glimpse(submission2)
+submission_zeroes2 <- submission_zeroes2 %>% select(id,ID,visitors,counter)
+submission2 <- submission2 %>% select(id,ID,visitors,counter)
 
 submission2 <- bind_rows(submission2,submission_zeroes2) %>%arrange(counter)%>%select(-counter)
 
-skimr::skim(submission)
-
-submission2 %>% filter(str_detect(ID,"restaurant_ 292")|str_detect(ID,"restaurant_ 325"))
-
-submission2 %>% janitor::tabyl(visitors)
-
 submission2$visitors <- if_else(submission2$visitors<0,0,submission2$visitors)
 
-submission2 %>% janitor::tabyl(visitors)
+submission2=submission2%>%select(-ID)
+submission2 <-rename(submission2,ID=id)
 
-submission2 %>% write_csv("project6_data_submission2.csv")
+submission2 %>% write_csv("project6_data_submission.csv")
 ```
 
 
-
-
-
-```{r}
-#add in data for avg of day of the week per id
-combinedDataset=combinedDataset %>% left_join(combinedDataset%>%group_by(ID,day_of_week)%>%summarise(avg_of_day_id=mean(visitors)),by=c("ID","day_of_week"))
-
-
-
-
-combinedDataset$ID=as.factor(combinedDataset$ID)
-combinedDataset$air_genre_name=as.factor(combinedDataset$air_genre_name)
-combinedDataset$air_area_name=as.factor(combinedDataset$air_area_name)
-combinedDataset=combinedDataset%>%select(-day_mon_rest)
-
-trainset2 <- subset(combinedDataset,visit_date <= as.Date("2017-03-10"))
-testset2 <- subset(combinedDataset,visit_date > as.Date("2017-03-10"))
-
-set.seed(122)
-
-mod10=lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name + count_of_reservations + Tot_visit_day_from_Reservations + avg_of_day_id, data=trainset2)
-summary(mod10)
-
-
-
-```
-
-test the new fits with rsq 
-
-```{r}
-
-
-#mod 10
-predictTest2<-predict(mod10, new_data = testset2)
-#Calculation of SSE 
-sse<-sum((testset$visitors-predictTest1)^2)
-#Calculation of the average of Tot visi per day in the Test set
-ybar2<- mean(testset$visitors)
-#Calculation of SST
-sst<-sum((testset$visitors-ybar2)^2)
-#Calculation of R-squared
-rsquared2<- (1-(sse/sst))
-rsquared2
-
-```
-
-```{r}
+```{r in depth random forest attempt,include=FALSE}
 
 #################### 14-Dec to do's:
 ######## 1. remove dates from RF run as that won't be usable
 
+# 
+# rfDataset=combinedDataset%>%select(-date,-calendar_date)
+# 
+# trainsetRF <- subset(rfDataset,visit_date <= as.Date("2017-03-10"))
+# testsetRF <- subset(rfDataset,visit_date > as.Date("2017-03-10"))
+# 
+# rfDataset=rfDataset%>%select(-visit_date)
+# trainsetRF=trainsetRF%>%select(-visit_date)
+# testsetRF=testsetRF%>%select(-visit_date)
+# 
+# rf_spec <- rand_forest(mode = "regression") %>%
+#   set_engine("ranger")
+# 
+# rf_spec
+# ## Random Forest Model Specification (regression)
+# ##
+# ## Computational engine: ranger
+# rf_fit <- rf_spec %>%
+#   fit(visitors ~ .,
+#     data = trainsetRF
+#   )
+# 
+# rf_fit
+# 
+# #RF
+# predictTest2<-predict(rf_fit, new_data = testsetRF)
+# #Calculation of SSE 
+# sse<-sum((testsetRF$visitors-predictTest2)^2)
+# #Calculation of the average of Tot visi per day in the Test set
+# ybar2<- mean(testsetRF$visitors)
+# #Calculation of SST
+# sst<-sum((testsetRF$visitors-ybar2)^2)
+# #Calculation of R-squared
+# rsquared2<- (1-(sse/sst))
+# #Print rsq
+# rsquared2
+# 
 
-rfDataset=combinedDataset%>%select(-date,-calendar_date)
+```
 
-trainsetRF <- subset(rfDataset,visit_date <= as.Date("2017-03-10"))
-testsetRF <- subset(rfDataset,visit_date > as.Date("2017-03-10"))
+<!-- ### Result of fitting an RF and a LM model including the new variable average of visitors for a specific restaurant on a certain weekday -->
 
-rfDataset=rfDataset%>%select(-visit_date)
-trainsetRF=trainsetRF%>%select(-visit_date)
-testsetRF=testsetRF%>%select(-visit_date)
+<!-- From this we can see that the rsq on the test set predictions between the random forest and the linear model are nearly identical whereas the LM model appeared to have a higher rsq -->
 
-rf_spec <- rand_forest(mode = "regression") %>%
-  set_engine("ranger")
+<!-- We will use the **Random Forest** model as our final model as it appears to be less overfit and tests slightly better on the test set predictions. -->
 
-rf_spec
-## Random Forest Model Specification (regression)
-##
-## Computational engine: ranger
-rf_fit <- rf_spec %>%
-  fit(visitors ~ .,
-    data = trainsetRF
-  )
-
-rf_fit
-
-#RF
-predictTest2<-predict(rf_fit, new_data = testsetRF)
-#Calculation of SSE 
-sse<-sum((testsetRF$visitors-predictTest2)^2)
-#Calculation of the average of Tot visi per day in the Test set
-ybar2<- mean(testsetRF$visitors)
-#Calculation of SST
-sst<-sum((testsetRF$visitors-ybar2)^2)
-#Calculation of R-squared
-rsquared2<- (1-(sse/sst))
-#Print rsq
-rsquared2
+<!-- As a final step we will perform a last fit of the random forest with the whole dataset as we do not want to drop levels or some data later in the dataset that could improve our prediction on the April dataset.  -->
 
 
+```{r pt 2 of the RF in depth model attempt, include=FALSE}
+# rf_rec = rfDataset%>%select(-X) %>%
+#   recipe(visitors ~ . ) %>%
+#   step_novel(ID,air_genre_name, air_area_name)
+# 
+# rf_proc=prep(rf_rec)
+# 
+# 
+# 
+# rf_spec <- rand_forest(mode = "regression") %>%
+#   set_engine("ranger")
+# 
+# ## Random Forest Model Specification (regression)
+# ##
+# ## Computational engine: ranger
+# 
+# rf_workflow2 <- workflow() %>% 
+#                add_model(rf_spec) %>% 
+#                add_recipe(rf_rec)
+# 
+# # rf_folds <- vfold_cv(rfDataset)
+# # 
+# # rf_res <- fit_resamples(
+# #   rf_workflow2,
+# #   rf_folds,
+# #   control = control_resamples(save_pred = TRUE)
+# # )
+# # 
+# # rf_res %>%
+# #   collect_metrics()
+# 
+# 
+# 
+# rf_fit_Final <- fit(rf_workflow2,data=rfDataset)
+# 
+# rf_fit_Final
+
+```
+
+```{r submission chunk 3, include=FALSE}
+# submission3 <- read.csv("project_submission (1).csv")
+```
+
+```{r submission chunk 3 pt 2, include=FALSE}
+# submission3<-submission3%>%mutate(date1 = str_sub(ID,-10,-1))
+# submission3<-submission3%>%mutate(id = str_sub(ID,1,-13))
+# submission3$id=as.factor(submission3$id)
+# submission3$date1<-ymd(submission3$date1)
+# head(submission3)
+# submission3[1,4]
+# submission3$id <- str_trim(submission3$id)
+# submission3[1,4]
+# 
+# submission3<-rename(submission3,id=ID,date=date1,ID=id)
+# 
+# submission3$date=ymd(submission3$date)
+# 
+# submission3$counter <- seq(from=1,to=15770,by=1) 
+# 
+# date_info=rename(date_info,date=calendar_date)
+# 
+# submission3 <- submission3 %>% left_join(date_info%>%select(-holiday_flg),by="date")
+# 
+# submission3$id=as.factor(submission3$ID)
+# 
+# submission3 <- submission3 %>% left_join(rfDataset %>% select(-visitors),by=c("ID","day_of_week")) 
+# 
+# 
+# submission3=submission3%>%select(ID,visitors,air_genre_name,air_area_name,latitude,longitude,Tot_visit_day_from_Reservations,count_of_reservations,day_of_week,holiday_flg,avg_of_day_id,date,counter)
+# 
+# rf_rec=prep(rf_rec)
+# test_proc <- bake(rf_rec, new_data = submission3)
+# 
+# submission3 %>% filter(is.na(holiday_flg))
+# rfDataset %>%filter(ID=="restaurant_ 9")
+# 
+# 
+# submission3Empties = submission3 %>% filter(is.na(holiday_flg))
+# 
+# submission3Compl = submission3 %>% drop_na(holiday_flg)
+# 
+# reservation_per_day$date=ymd(reservation_per_day$date)
+# 
+# # submission3Empties %>% select(-air_genre_name,-air_area_name, -latitude, -longitude, -Tot_visit_day_from_Reservations, -count_of_reservations, -holiday_flg, -avg_of_day_id) %>% left_join((reservation_per_day%>%select(-day_mon_rest)),by=c("ID","date"))
+# 
+# submission3Compl$visitors <- pull(predict(rf_fit_Final, new_data = submission3Compl),.pred)
+# submission3Compl$visitors <- round(submission3Compl$visitors,0)
+# # submission_zeroes3 <- submission_zeroes %>% select(ID,visitors,counter)
+# submission3Compl <- submission3Compl %>% select(ID,visitors,counter)
+# # submission3 <-rename(submission3,ID=id)
+# # submission_zeroes2 <-rename(submission_zeroes2,ID=id)
+# # submission <- submission %>% add_row(ID="restaurant_ 292",visitors=0) %>% add_row(ID="restaurant_ 325",visitors=0)
+# 
+# glimpse(submission3Compl)
+# 
+# # submission3 <- bind_rows(submission3,submission_zeroes2) %>%arrange(counter)%>%select(-counter)
+# # 
+# # 
+# # submission3 %>% filter(str_detect(ID,"restaurant_ 292")|str_detect(ID,"restaurant_ 325"))
+# # 
+# # submission3 %>% janitor::tabyl(visitors)
+# # 
+# # submission3$visitors <- if_else(submission3$visitors<0,0,submission3$visitors)
+# # 
+# # submission3 %>% janitor::tabyl(visitors)
+# # 
+# # submission3 %>% write_csv("project6_data_submission3.csv")
 ```
 
 
 
 
-### Result of fitting an RF and a LM model including the new variable average of visitors for a specific restaurant on a certain weekday
-
-From this we can see that the rsq on the test set predictions between the random forest and the linear model are nearly identical whereas the LM model appeared to have a higher rsq
-
-We will use the **Random Forest** model as our final model as it appears to be less overfit and tests slightly better on the test set predictions.
-
-As a final step we will perform a last fit of the random forest with the whole dataset as we do not want to drop levels or some data later in the dataset that could improve our prediction on the April dataset. 
-
-
-```{r}
-rf_rec = rfDataset%>%select(-X) %>%
-  recipe(visitors ~ . ) %>%
-  step_novel(ID,air_genre_name, air_area_name)
-
-rf_proc=prep(rf_rec)
 
 
 
-rf_spec <- rand_forest(mode = "regression") %>%
-  set_engine("ranger")
-
-## Random Forest Model Specification (regression)
-##
-## Computational engine: ranger
-
-rf_workflow2 <- workflow() %>% 
-               add_model(rf_spec) %>% 
-               add_recipe(rf_rec)
-
-# rf_folds <- vfold_cv(rfDataset)
-# 
-# rf_res <- fit_resamples(
-#   rf_workflow2,
-#   rf_folds,
-#   control = control_resamples(save_pred = TRUE)
-# )
-# 
-# rf_res %>%
-#   collect_metrics()
 
 
-
-rf_fit_Final <- fit(rf_workflow2,data=rfDataset)
-
-rf_fit_Final
-
-```
-
-```{r}
-submission3 <- read.csv("project_submission (1).csv")
-```
-
-```{r}
-submission3<-submission3%>%mutate(date1 = str_sub(ID,-10,-1))
-submission3<-submission3%>%mutate(id = str_sub(ID,1,-13))
-submission3$id=as.factor(submission3$id)
-submission3$date1<-ymd(submission3$date1)
-head(submission3)
-submission3[1,4]
-submission3$id <- str_trim(submission3$id)
-submission3[1,4]
-
-submission3<-rename(submission3,id=ID,date=date1,ID=id)
-
-submission3$date=ymd(submission3$date)
-
-submission3$counter <- seq(from=1,to=15770,by=1) 
-
-date_info=rename(date_info,date=calendar_date)
-
-submission3 <- submission3 %>% left_join(date_info%>%select(-holiday_flg),by="date")
-
-submission3$id=as.factor(submission3$ID)
-
-submission3 <- submission3 %>% left_join(rfDataset %>% select(-visitors),by=c("ID","day_of_week")) 
-
-
-submission3=submission3%>%select(ID,visitors,air_genre_name,air_area_name,latitude,longitude,Tot_visit_day_from_Reservations,count_of_reservations,day_of_week,holiday_flg,avg_of_day_id,date,counter)
-
-rf_rec=prep(rf_rec)
-test_proc <- bake(rf_rec, new_data = submission3)
-
-submission3 %>% filter(is.na(holiday_flg))
-rfDataset %>%filter(ID=="restaurant_ 9")
-
-
-submission3Empties = submission3 %>% filter(is.na(holiday_flg))
-
-submission3Compl = submission3 %>% drop_na(holiday_flg)
-
-reservation_per_day$date=ymd(reservation_per_day$date)
-
-# submission3Empties %>% select(-air_genre_name,-air_area_name, -latitude, -longitude, -Tot_visit_day_from_Reservations, -count_of_reservations, -holiday_flg, -avg_of_day_id) %>% left_join((reservation_per_day%>%select(-day_mon_rest)),by=c("ID","date"))
-
-submission3Compl$visitors <- pull(predict(rf_fit_Final, new_data = submission3Compl),.pred)
-submission3Compl$visitors <- round(submission3Compl$visitors,0)
-# submission_zeroes3 <- submission_zeroes %>% select(ID,visitors,counter)
-submission3Compl <- submission3Compl %>% select(ID,visitors,counter)
-# submission3 <-rename(submission3,ID=id)
-# submission_zeroes2 <-rename(submission_zeroes2,ID=id)
-# submission <- submission %>% add_row(ID="restaurant_ 292",visitors=0) %>% add_row(ID="restaurant_ 325",visitors=0)
-
-glimpse(submission3Compl)
-
-# submission3 <- bind_rows(submission3,submission_zeroes2) %>%arrange(counter)%>%select(-counter)
-# 
-# 
-# submission3 %>% filter(str_detect(ID,"restaurant_ 292")|str_detect(ID,"restaurant_ 325"))
-# 
-# submission3 %>% janitor::tabyl(visitors)
-# 
-# submission3$visitors <- if_else(submission3$visitors<0,0,submission3$visitors)
-# 
-# submission3 %>% janitor::tabyl(visitors)
-# 
-# submission3 %>% write_csv("project6_data_submission3.csv")
-```
