@@ -274,6 +274,7 @@ reservations_graph %>%
   drop_na() %>%
   summarise(total_visitors = sum(reserve_visitors)) %>%
   ggplot(aes(visit_hour, total_visitors)) +
+  labs(title= "Total visitors per hour", y = "Total visitor", x= "Visit hour")+
   geom_col(fill="orange")
 ```
 
@@ -660,7 +661,7 @@ Then we launch the prediction and attached the results in the column of the visi
 
 ```
 
-## Step 9 - Decision tree
+## Step 9 - Regression tree
 
 ### Now let's explore decision tree fits
 
@@ -705,6 +706,7 @@ print("RF R-Squared")
 rf_fit$fit$r.squared
 
 
+
 ```
 
 We started from the splitting of the data set in the train and test set by the use of the function **initial_time_split**.
@@ -714,9 +716,22 @@ We perform the random forest taking in consideration all the variable available,
 
 We invoke 3 new packages to be able to run the decision tree method :
 
-<!-- library(rpart) -->
-<!-- library(rpart.plot) -->
-<!-- library(caTools) -->
+library(rpart)
+library(rpart.plot)
+library(caTools)  
+
+```{r}
+# rsq function 
+
+rsqUPC = function(test,pred) {
+sse<-sum((test$visitors-pred)^2)
+ybar<- mean(test$visitors)
+sst<-sum((test$visitors-ybar)^2)
+rsquared<- (1-(sse/sst))
+  return(rsquared)
+}
+```
+
 
 ```{r}
 
@@ -741,10 +756,12 @@ firsttree <- rpart(
   method  = "anova"
   )
 firsttree
+predtrain <- predict(firsttree, newdata= trainset2)
+rsqUPC(trainset2,predtrain)
 
 rsq.rpart(firsttree)
 ```
-
+We obtain a R-squared of 0.607 in the model create with **rpart**.
 ### Validation with the test set
 
 ```{r Validation of the tree with in class method,include=FALSE}
@@ -771,7 +788,7 @@ rsqUPC(testset2,predtree)
 ```
 
 We created a function **rsqUPC** that will help us in the process of the validation to easily calculate the R-squared.
-The result return us 0.6.
+The result return us 0.6. The value is lower but very close to the r-squared calculated with the train set.
 
 ## Final model choose 
 
