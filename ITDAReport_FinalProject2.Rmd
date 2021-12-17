@@ -219,12 +219,18 @@ The information that we will obtain in this section will be taken in considerati
 -  The below graph will show us the **overall total visitors per day**  
 
 ```{r}
-visits %>%
+
+visits$visit_date <- ymd(visits$visit_date)
+
+gdata=visits %>%
   group_by(visit_date) %>%
-  summarise(all_visitors = sum(visitors)) %>%
+  summarise(all_visitors = sum(visitors))
+
+gdata %>%
   ggplot(aes(x=visit_date,y=all_visitors)) +
   geom_line(col = "blue") +
   labs(x = "Visit date", y = "Total viusitors",title = "Total visitors per day")
+
 ```
 We can easily see that we have an increasing trend during the time, and we can also en-light the fact that during the week we always have a peak which is in correspondence of the weekend.
 
@@ -1120,23 +1126,23 @@ submission2 %>% write_csv("project6_data_submission.csv")
 
 # Conclusion  
 
-To be able to perform a proper analysis we modified some variables inside each data set, the very useful modification is related to the date. We take into consideration only the day relate to the observation that we had, so we avoided considering also the time, this procedure helped us in making the analysis less struggling. 
+To be able to perform a proper analysis we modified some variables inside each data set, the very useful modification is related to the date. We take into consideration only the day related to the observation that we had, so we avoided considering also the time, this procedure helped us in making the analysis less struggling. 
 
-From the analysis relate to each data set we have some interesting results:
+From the analysis related to each data set we have some interesting results:
 
 The sum of all the visitors per day tends to increase during the time, during the weekend we have always reached the maximum amount of visitor relate to a specific week. The previous sentences are supported by one result that we obtained the days with the highest mean of visitors are Friday, Saturday, and Sunday. While the day with the lower mean is Monday and Tuesday.  
 
-We also carried out an analysis related to the mean of visitors per month, but the result is useless cause we have available only three months so we cannot state anything. So, one of the points that we will modify in the future will be related to the dimension of the observation that we have. We want to increase it to cover at least 1 entire year to catch information relate to all the year.
+We also carried out an analysis related to the mean of visitors per month, but the result is useless because we have available only three months so we cannot state anything. So, one of the points that we will modify in the future will be related to the dimension of the observation that we have. We want to increase it to cover at least 1 entire year to catch information relate to all the year and ultimately a dataset that consists of many years.
 
 We also obtained information regarding the types of restaurants in the observations used, we can state that in Japan the restaurant with the highest frequency is Izakaya followed by Italian and French restaurants. Another result obtained is that the area with the highest number of the restaurant is Fukuoka followed by Tokyo.
 
-In our report we mainly try to use three models to create a prediction model:
+In our report we mainly tried to use three models to create a prediction model:
 
 - Linear regression
 - Regression tree
 - Random forest
 
-To find the proper model to adopt we use an iterative approach, in which each time we wanted to understand the variables more significantly. This lead us to create three variables that contribute a lot in increasing the variance explained by our model. The variables are:
+To find the proper model to adopt we used an iterative approach, in which each time we wanted to understand the variables more significantly. This lead us to creating three variables that contribute a lot in increasing the variance explained by our model. The variables are:
 
 - Tot_visit_day_from_Reservations: the total number of visitors that a restaurant receives per day from the reservations
 
@@ -1146,9 +1152,9 @@ To find the proper model to adopt we use an iterative approach, in which each ti
 
 From the results, we can see that the R-squared on the test set predictions between the random forest and the linear model are nearly identical whereas the LM model appeared to have a higher R-squared. So, our final prediction is provided through model 6 retrained with the full combined dataset to not lose levels of the restaurant ID.
 
-The result obtained is quite good, but our work will not stop here in the future we will explore other different models to try to create a model that allows us to reach an R-squared of 0.7.
+The result obtained is ok and we believe we performed reasonably well in creating a model given the time that we had, but our work will not stop here in the future we will explore different models to try to create a model that allows us to reach an R-squared of 0.7 and higher.
 
-Another future purpose will be related to increasing the dimension of the information available, we want to collect more information that permits us to understand in a better way the behavior and habits of the population of the different areas, and collect information that shows a picture of the restaurants during all the year.
+Another future potential will be related to increasing the dimension of the information available, we want to collect more information that permits us to understand in a better way the behavior and habits of the population of the different areas, and collect information that shows a picture of the restaurants during all the year.
 
 The result of this report, so the definition of prediction model will surely help the restaurant to decide to be efficient but they need to be taken leaving some space for the error. 
 
