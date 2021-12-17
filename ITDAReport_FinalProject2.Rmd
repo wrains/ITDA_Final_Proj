@@ -35,6 +35,8 @@ In this task, we are challenged to use reservation and visitation data to predic
  
  Our main objective will be to create different model that we will use to predict, (i.e. linear, decision tree and random forest model), and choose the model that seems the best one.
 
+\newpage
+
 # Setup the software  
 
 The software used for the development of the study and the writing of the report is R[1]. The first step is to load the libraries using during the development of the report: tidyverse[2], lubridate[3], leaflet[4], tidymodels[5], rpart[6], rpart.plot[7], caTools [8], RMySQL[9] and mapdata[10].
@@ -52,7 +54,9 @@ library(caTools)
 library(RMySQL)
 library(mapdata)
 ```
-
+ 
+\newpage 
+ 
 # Analysis
 
 ## Importing data from MySQL Workbench 8.0 CE
@@ -124,7 +128,7 @@ write.csv(air_reserve,"reservation_data.csv")
 write.csv(air_visit,"visit_data.csv")
 write.csv(date_info,"date_info.csv")
 write.csv(restaurant_info,"restaurant_info.csv")
-
+\newpage
 ## **Step 1 - read in the dataset**
 
 ```{r}
@@ -208,8 +212,9 @@ In the following section we will try to understand the main characteristic of th
 
 The information that we will obtain in this section will be taken in consideration to build the different models for the prediction. 
 
+\newpage
 
-###**Table visits**
+### Table visits
 
 -  The below graph will show us the **overall total visitors per day**  
 
@@ -219,10 +224,11 @@ visits %>%
   summarise(all_visitors = sum(visitors)) %>%
   ggplot(aes(x=visit_date,y=all_visitors)) +
   geom_line(col = "blue") +
-  labs(x = "Visit date", y = "Total viusitors",title = "Total visitors per day")+
-  theme_minimal()
+  labs(x = "Visit date", y = "Total viusitors",title = "Total visitors per day")
 ```
 We can easily see that we have an increasing trend during the time, and we can also en-light the fact that during the week we always have a peak which is in correspondence of the weekend.
+
+\newpage
 
 -  The below graph will show the overall mean visitors per day of the week  
 
@@ -236,10 +242,13 @@ visits %>%
   ggplot(aes(week_day, visits, fill = week_day)) +
   geom_col() +
   theme(legend.position = "none") +
-  labs(x = "Day of the week", y = "Mean visitors", title = "Mean visitors per day of the week") 
+  labs(x = "Day of the week", y = "Mean visitors", title = "Mean visitors per day of the 
+       week") 
 ```
 
 From the result we can easily see that the day with the higher mean fall during the Friday, Saturday and Sunday. While the day with the lower mean are Monday and Tuesday.
+
+\newpage
 
 -  The below graph will show the total mean visitors per month  
 
@@ -256,7 +265,10 @@ visits %>%
 
 ```
 
-Marcch is th month with the highest mean.
+Marcch is th month with the highest mean.  
+
+\newpage 
+
 ### Reservation
 
 ```{r}
@@ -281,9 +293,11 @@ reservations_graph %>%
 
 From this graph we can easily see that the majority of the client usually do reservation for the evening. Between 5 AM and 10 AM, we can see that we don't have values principally relate to the fact that restaurant during that time are usually closed.
 
+\newpage
+
 ### Restaurant Info
 
-Plotting the position of the different restaurant
+Plotting the positions of the different restaurant
 
 ```{r}
 # leaflet(restaurant_info) %>%
@@ -302,6 +316,8 @@ The leaflet package only outputs HTML formats thus we will insert images from th
 
 The map show us that many restaurants share common coordinates, since those coordinates refer to the area of the restaurant. By clicking on the clusters they will break  into smaller clusters and at the end into the individual restaurants, which are labelled by their genre name . If we click on the single markers we will able to visualize the id of each restaurant in the cluster.
 
+\newpage
+ 
 Let's also take a look on the location of the restaurants without the creation of the cluster.
 
 ```{r, out.width="100%"}
@@ -317,7 +333,7 @@ ggplot()+
 
 ```
 
-
+\newpage
 
 -  Let's have a look on the genre name frequency
 
@@ -325,15 +341,16 @@ ggplot()+
 reservations %>%
   group_by(air_genre_name) %>%
   count() %>%
-  ggplot(aes(air_genre_name, n, fill = air_genre_name)) +
+  ggplot(aes(air_genre_name, n, fill = air_genre_name))+
   geom_col() +
-  theme(legend.position = "none",axis.text.x  = element_text(angle=45, hjust=1, vjust=0.9))+
-  labs(x = "Air genre name", y = "Number of genre restaurants")
+  theme(legend.position = "none",axis.text.x  = element_text(angle=45, hjust=1,                       vjust=0.9))+
+  labs(x = "Air genre name", y = "Number of genre restaurants", title= "Restaurants genre name frequency")
 
 ```
 
 From the graph, we see that there are lots of **Izakaya** restaurants, (which indicates a typical Japanese place where drinks are served accompanied by food ), in our data, followed by **Italian/French** restaurants. We have only 2 Asian restaurants, 3 International cuisine and 24 Karaoke/Party places in the data set.
 
+\newpage
 
 -  Let's have a look on the frequency of restaurant in the different area  
 ```{r}
@@ -346,10 +363,12 @@ restaurant_info %>%
   geom_col() +
   theme(legend.position = "none") +
   coord_flip() +
-  labs(x = "Top 15 areas (air_area_name)", y = "Number of restaurants in an area")
+  labs(x = "Top 15 areas (air_area_name)", y = "Number of restaurants in an area", title = "Frequency of restaurants in the different areas")
 ```
 
 Fukuoka has the largest number of restaurants per area, followed by many Tokyo areas.
+
+\newpage
 
 ## Step 4 - Examine the variables in the datasets
 
@@ -364,6 +383,7 @@ for(data in list(reservations,visits,date_info,restaurant_info)) {
 
 ```
 
+\newpage
 
 ## Step 5 - Convert the date variables with lubridate
 
@@ -405,6 +425,8 @@ Looking at the data set Visits  also the first visit that we have inside the dat
 
 We also evaluate some information relate to the data_set date_info and we get that the first date that we have is 2016-01-01 while the last one is 2017-05-31.
 
+\newpage
+
 ## Step 7 - Data Modelling
 
 ### Now we will summarize by day.
@@ -419,7 +441,7 @@ reservations<- reservations%>%mutate(month_reservation = month(reservations$rese
 reservations<- reservations%>%mutate(year_reservation = 2017)
 reservations<- reservations%>%mutate(date = '')
 
-reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
+reservations$date <- as.Date(with(reservations, paste(year_reservation,                               month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
 
 reservation_per_day <- reservations %>%
   mutate(day_mon_rest=paste(day_reservation,month_reservation,ID))%>%
@@ -442,15 +464,21 @@ We also create a new data set called **reservation_per_day**, where we create tw
 Now we've created a summarized version of the reservation data set and we need to join this into the visits data set to form our total data set with all of the variables we will use.
 
 ```{r}
-# visits <- visits %>% add_row(ID="restaurant_ 292",air_genre_name="Cafe/Sweets",air_area_name="T?ky?-to Shibuya-ku Shibuya",latitude=35.66178,longitude=139.7041) %>% add_row(ID="restaurant_ 325",air_genre_name="Cafe/Sweets",air_area_name="Hokkaid? Sapporo-shi Minami 3 J?nishi",latitude=43.05546,longitude=141.341)
+# visits <- visits %>% add_row(ID="restaurant_ 292",air_genre_name="Cafe/Sweets",
+#air_area_name="T?ky?-to Shibuya-ku Shibuya",latitude=35.66178,longitude=139.7041) %>% add_row(ID="restaurant_ 325",
+#air_genre_name="Cafe/Sweets",air_area_name="Hokkaid? Sapporo-shi Minami 3 J?nishi",latitude=43.05546,longitude=141.341)
 
 date_info$calendar_date=ymd(date_info$calendar_date)
 
-combinedDataset <- visits %>% mutate(date = visit_date) %>%  left_join(reservation_per_day,by = c('date','ID')) %>%
-  mutate(calendar_date=date) %>% left_join(date_info,by='calendar_date')
+combinedDataset <- visits %>% mutate(date = visit_date) %>%  left_join(reservation_per_day,
+                                                      by = c('date','ID')) %>%
+  
+mutate(calendar_date=date) %>% left_join(date_info,by='calendar_date')
 
 combinedDataset <- combinedDataset %>% left_join(
-  y=(combinedDataset %>% group_by(air_genre_name) %>% summarise(avgDailyVisitsGenre = mean(visitors))),
+  y=(combinedDataset %>% group_by(air_genre_name) %>% 
+       summarise(avgDailyVisitsGenre = mean(visitors))),
+  
 by="air_genre_name")
 
 ```
@@ -459,6 +487,7 @@ The result is the **combineDataset** with all the variable that we mentioned bef
 
 In the last part of the previous chunk we also create a new column wich represent the mean daily visitor per restaurant genre name.
 
+\newpage
 
 ## Step 8 - Linear regression models  
 
@@ -483,10 +512,12 @@ testset <- subset(combinedDataset,visit_date > as.Date("2017-03-10"))
 
 This is a simpler modeling technique and we want to start here to see if by chance it is the best fitting type of model. 
 
-#### Model 1
+#### Model 1  
+
 ```{r}
 
-#mod1<-lm(visitors ~ date + air_genre_name+latitude+longitude+count_of_reservations, data=trainset)
+#mod1<-lm(visitors ~ date + air_genre_name+latitude+longitude+count_of_reservations, 
+#data=trainset)
 # 
 #summary(mod1)$r.squared
 ```
@@ -499,7 +530,9 @@ The first trial show us that this model is not so good, the first information th
 ```{r}
 
 
-#mod2<- lm( visitors ~ date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + latitude + longitude, data=trainset)
+#mod2<- lm( visitors ~ date + Tot_visit_day_from_Reservations + day_of_week + 
+
+#holiday_flg + air_genre_name + latitude + longitude, data=trainset)
 # 
 #summary(mod2)$r.squared
 ```
@@ -508,14 +541,15 @@ With the second trial we can see that we are improving the R-squared increas to 
 
 ### Model 3
 ```{r}
-# mod3<- lm( visitors ~ visit_date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
+# mod3<- lm( visitors ~ visit_date + Tot_visit_day_from_Reservations + day_of_week + 
+
+#holiday_flg + air_genre_name + air_area_name, data=trainset)
 # summary(mod3)$r.squared
 # max rsq achieved to this point
-print(.252)
+print("R-squared = .252")
 ```
 
 
-date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + latitude + longitude
 
 In the third trial we improve again the R-squared increas to 0.252. We reach this improvement by removing the variable **longitude** and **latitude**, and adding the variables **air_area_name** and substituting the **date**,(relate to the date in which reservation was made), with **visit_date** ,(day for which the reservation is made).
 
@@ -528,7 +562,8 @@ Ultimately in this sort of modeling situation, the restaurant themselves will ha
 ### Model 4
 
 ```{r}
-# mod4<- lm( visitors ~  ID + visit_date + Tot_visit_day_from_Reservations + day_of_week + holiday_flg + air_genre_name + latitude + longitude, data=trainset)
+# mod4<- lm( visitors ~  ID + visit_date + Tot_visit_day_from_Reservations + day_of_week 
+#+ holiday_flg + air_genre_name + latitude + longitude, data=trainset)
 # summary(mod4)$r.squared
 
 ```
@@ -540,7 +575,8 @@ Let's comment a bit the fourth model, as we supposed taking in consideration the
 Another few iterations - we realized that visit date wouldn't be of any use for the dataset we are predicting (and would make the model not usable), thus we've swapped it for **day_of_week**.
 
 ```{r}
-#mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, data=trainset)
+#mod5<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name, 
+#data=trainset)
 #summary(mod5)$r.squared
 
 ```
@@ -549,7 +585,7 @@ After running the model the R-squared decrease a bit to 0.4978, but we decide to
 
 ### Validation of the model
 
-```{r 1st Validation Block,include=FALSE}
+```{r 1st Validation Block}
 # predictTest<-predict(mod5, newdata = (testset%>%filter(ID!="restaurant_ 514"&ID!="restaurant_ 516"&ID!="restaurant_ 573")%>%arrange(ID)))
 # 
 # #Calculation of SSE
@@ -577,9 +613,12 @@ After running the model the R-squared decrease a bit to 0.4978, but we decide to
 # 
 # rsquared
 # 
-# ############### Method from below may work here but something needs to be fixed with the datasets
+# ############### Method from below may work here but 
+
+#something needs to be fixed with the datasets
 # 
-# testset<-testset%>%filter(ID!="restaurant_ 514",ID!="restaurant_ 516",ID!="restaurant_ 573")
+# testset<-testset%>%filter(ID!="restaurant_ 514",
+#ID!="restaurant_ 516",ID!="restaurant_ 573")
 # predictTest1<-predict(mod5, newdata = testset)
 # 
 # #Calculation of SSE
@@ -603,6 +642,7 @@ After running the model the R-squared decrease a bit to 0.4978, but we decide to
 
 
 ```
+
 In the previous chunck we performed the validation of the mod 5, we create a prediction through this model relate to the visitors in the test set and than we calculate the R-squared taking in consideration the values predicted and the real values available. We obtained a result of 0.4823 which is good because is close and not higher to R-squared obtained in the creation of the model.
 
 ### Filling the submission file
@@ -613,7 +653,7 @@ Initially we use some command to extract the the date and the respective restaur
 
 Then we launch the prediction and attached the results in the column of the visitors in the submission file, we reset the order of the rows as it was initially, and finally we write a csv file with the result.
 
-```{r 1st Prediction Output,include=FALSE}
+```{r 1st Prediction Output}
 # submission <- read.csv("project_submission (1).csv")
 
 # submission<-submission%>%mutate(date1 = str_sub(ID,-10,-1))
@@ -661,6 +701,8 @@ Then we launch the prediction and attached the results in the column of the visi
 # submission %>% write_csv("project6_data_submission.csv")
 
 ```
+
+\newpage
 
 ## Step 9 - Regression tree
 
@@ -717,9 +759,9 @@ We perform the random forest taking in consideration all the variable available,
 
 We invoke 3 new packages to be able to run the decision tree method :
 
-library(rpart)
-library(rpart.plot)
-library(caTools)  
+- library(rpart)  
+- library(rpart.plot)  
+- library(caTools)    
 
 ```{r}
 # rsq function 
@@ -744,7 +786,8 @@ combinedDataset$air_area_name=as.factor(combinedDataset$air_area_name)
 combinedDataset=combinedDataset%>%select(-day_mon_rest)
 
 combinedDataset$count_of_reservations[is.na(combinedDataset$count_of_reservations)] <- 0
-combinedDataset$Tot_visit_day_from_Reservations[is.na(combinedDataset$Tot_visit_day_from_Reservations)] <- 0
+combinedDataset$Tot_visit_day_from_Reservations[is.na(
+  combinedDataset$Tot_visit_day_from_Reservations)] <- 0
 
 trainset2 <- subset(combinedDataset,visit_date <= as.Date("2017-03-10"))
 testset2 <- subset(combinedDataset,visit_date > as.Date("2017-03-10"))
@@ -752,7 +795,8 @@ testset2 <- subset(combinedDataset,visit_date > as.Date("2017-03-10"))
 
 
 firsttree <- rpart(
-  formula = visitors ~ ID + air_area_name + latitude + longitude + air_genre_name+ avgDailyVisitsGenre + count_of_reservations + avg_of_day_id,
+  formula = visitors ~ ID + air_area_name + latitude + longitude + air_genre_name+ 
+    avgDailyVisitsGenre + count_of_reservations + avg_of_day_id,
   data    = trainset2,
   method  = "anova"
   )
@@ -762,8 +806,10 @@ rsqUPC(trainset2,predtrain)
 
 rsq.rpart(firsttree)
 ```
-We obtain a R-squared of 0.607 in the model create with **rpart**.
-### Validation with the test set
+We obtain a R-squared of 0.607 in the model create with **rpart**.  
+
+### Validation with the test set  
+
 
 ```{r Validation of the tree with in class method,include=FALSE}
 
@@ -791,6 +837,8 @@ rsqUPC(testset2,predtree)
 We created a function **rsqUPC** that will help us in the process of the validation to easily calculate the R-squared.
 The result return us 0.6. The value is lower but very close to the r-squared calculated with the train set.
 
+\newpage
+
 ## Final model choose 
 
 ### Now we will consider again LM with all of the variables that we've now developed
@@ -802,7 +850,10 @@ Considering visit date time instead of reserve date time to not lose information
 
 ```{r}
 
-mod6=lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name + count_of_reservations + Tot_visit_day_from_Reservations + avg_of_day_id, data=trainset2)
+mod6=lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name + 
+           count_of_reservations + 
+           Tot_visit_day_from_Reservations + 
+           avg_of_day_id, data=trainset2)
 summary(mod6)$r.squared
 #We will print the rsq instead of printing the summary to conciseness of the report
 
@@ -848,14 +899,17 @@ submission2$counter <- seq(from=1,to=15770,by=1)
 
 submission2$ID=as.factor(submission2$ID)
 
-submission2 <- submission2 %>% left_join(restaurant_info%>%select(-X), by="ID") %>% left_join(date_info %>% mutate(date = ymd(calendar_date)),by="date") %>% left_join(combinedDataset %>% select(ID,day_of_week,avg_of_day_id)%>%distinct(),by=c("ID","day_of_week"))
+submission2 <- submission2 %>% left_join(restaurant_info%>%select(-X), by="ID") %>% left_join(date_info %>% mutate(date = ymd(calendar_date)),by="date") %>%
+  
+left_join(combinedDataset %>% select(ID,day_of_week,avg_of_day_id)%>%distinct(),by=c("ID","day_of_week"))
 
 reservations<- reservations%>%mutate(day_reservation = day(reservations$visit_datetime))
 reservations<- reservations%>%mutate(month_reservation = month(reservations$visit_datetime))
 reservations<- reservations%>%mutate(year_reservation = 2017)
 reservations<- reservations%>%mutate(date = '')
 
-reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
+reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, 
+                                                      day_reservation,sep="-")), "%Y-%m-%d")
 
 reservation_per_day <- reservations %>%
   group_by(ID,date) %>%
@@ -864,14 +918,17 @@ reservation_per_day <- reservations %>%
 
 reservation_per_day$ID=as.factor(reservation_per_day$ID)
 
-mod6<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name + count_of_reservations + Tot_visit_day_from_Reservations + avg_of_day_id, data=combinedDataset)
+mod6<- lm( visitors ~  ID + day_of_week + holiday_flg + air_genre_name + air_area_name + 
+             count_of_reservations + Tot_visit_day_from_Reservations + avg_of_day_id, data=combinedDataset)
 predictTest2<-predict(mod6, newdata = combinedDataset)
 ##quick rsq calculation on model
 rsqUPC(combinedDataset,predictTest2)
 
-submission2 <- submission2 %>% select(-date)%>%mutate(date=ymd(calendar_date)) %>% select(-calendar_date) %>% left_join(reservation_per_day,by=c("date", "ID"))
+submission2 <- submission2 %>% select(-date)%>%mutate(date=ymd(calendar_date)) %>% 
+  select(-calendar_date) %>% left_join(reservation_per_day,by=c("date", "ID"))
 
-submission2$count_of_reservations[is.na(submission2$count_of_reservations)] <- 0
+submission2$count_of_reservations[is.na(
+  submission2$count_of_reservations)] <- 0
 submission2$Tot_visit_day_from_Reservations[is.na(submission2$Tot_visit_day_from_Reservations)] <- 0
 submission2$avg_of_day_id[is.na(submission2$avg_of_day_id)] <- 0
 
@@ -1058,6 +1115,8 @@ submission2 %>% write_csv("project6_data_submission.csv")
 # # 
 # # submission3 %>% write_csv("project6_data_submission3.csv")
 ```
+
+\newpage
 
 # Conclusion  
 
