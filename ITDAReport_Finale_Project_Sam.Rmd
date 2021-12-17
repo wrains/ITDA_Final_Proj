@@ -10,9 +10,12 @@ knitr::opts_chunk$set(echo = TRUE, eval = TRUE, warning = FALSE, message = FALSE
 
 ```  
 
-# Introduction
+# Introduction  
+
+
 
 ## Problem Statement
+
 
 ## Dataset
 
@@ -98,20 +101,51 @@ first of january / 10 march
 ```{r }
 reservations<- reservations%>%mutate(day_reservation = day(reservations$reserve_datetime))
 reservations<- reservations%>%mutate(month_reservation = month(reservations$reserve_datetime))
+reservations<- reservations%>%mutate(year_reservation = 2017)
+reservations<- reservations%>%mutate(date = '')
+tail(reservations)
 
-# Selection of Test set From 01-01-2017 to 10-03-2017
+# reservation_per_day <- reservations %>%
+#   mutate(daymonrest=paste(day_reservation,month_reservation,ID))%>%
+#   group_by(ID,day_reservation,month_reservation,daymonrest)%>%
+#   summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
+#             count_of_reservations = n()) %>%
+#   mutate(cal_date = ymd(year=2017,month=month_reservation,day=day_reservation))
+# year <- 2017
+
+reservations$date <- as.Date(with(reservations, paste(year_reservation, month_reservation, day_reservation,sep="-")), "%Y-%m-%d")
+
+reservation_per_day <- reservations %>%
+  mutate(daymonrest=paste(day_reservation,month_reservation,ID))%>%
+  group_by(ID,daymonrest,date) %>%
+  summarise(Tot_visit_day_from_Reservations = sum(reserve_visitors),
+            count_of_reservations = n()) 
+
+
+# filter(reserve_datetime>= ymd("20170101"), reserve_datetime<= ymd("20170310"))%>%
+
+# %>%
+#   group_by(ID,day_reservation,month_reservation,Tot_visit_day_from_Reservations)
+# %>%
+#   count(day_reservation,month_reservation,ID)
+# mutate(daymonrest=paste(day_reservation,month_reservation,ID))%>%
+
+names(reservations)
+names(reservation_per_day)
+
 
 reservation_per_day<-reservations%>%filter(reserve_datetime>= ymd("20170101"), reserve_datetime<= ymd("20170310"))%>% group_by(ID,day_reservation,month_reservation)%>%summarise(Tot_visit_day = sum(reserve_visitors))
 
-
+tail(reservation_per_day)
 ```
 To get the total number of reservation in a day, we calculate the mean of of the total visitor, and then we divided the total number of visitor for the mean and we get the total number of reservation per day
 ```{r}
-reservation_per_day2<-reservations%>%filter(reserve_datetime>= ymd("20170101"), reserve_datetime<= ymd("20170310"))%>% group_by(ID,day_reservation,month_reservation,air_genre_name,air_area_name,latitude,longitude)%>%summarise(Tot_visit_day = sum(reserve_visitors), mean_visitors_per_day = mean(reserve_visitors))
+reservation_per_day2<-reservations%>%filter(reserve_datetime>= ymd("20170101"), reserve_datetime<= ymd("20170310"))%>% group_by(ID,day_reservation,month_reservation,air_genre_name,air_area_name,latitude,longitude)%>%summarise(Tot_visitor_day = sum(reserve_visitors), mean_visitors_per_day = mean(reserve_visitors))
 
-reservation_per_day2<-reservation_per_day2%>%mutate(tot_reservation_per_day= Tot_visit_day/mean_visitors_per_day )
+reservation_per_day2<-reservation_per_day2%>%mutate(tot_reservation_per_day= Tot_visitor_day/mean_visitors_per_day )
 
 ```
+
 # new part 24/11/2021
 
 #let's create the new test set
@@ -141,6 +175,8 @@ mod2<-lm(reservation_per_day2$Tot_visitor_day ~ day_reservation+ air_genre_name+
 
 summary(mod2)
 ```
+
+#3
 ```{r}
 mod3<-lm(reservation_per_day2$Tot_visitor_day ~ day_reservation+ air_genre_name+longitude+tot_reservation_per_day, data=reservation_per_day2)
 
@@ -162,6 +198,7 @@ sse<-sum((reservation_per_day2Test$Tot_visitor_day-predictTest)^2)
 ybar<- mean(reservation_per_day2Test$Tot_visitor_day)
 
 #Calculation of SST
+
 sst<-sum((reservation_per_day2Test$Tot_visitor_day-ybar)^2)
 
 #Calculation of R-squared
@@ -171,4 +208,36 @@ rsquared<- (1-(sse/sst))
 rsquared
 ```
 
+#24/11/2021 11:00
+# Adding mean visitor in the model and validate model
+#4
+
+```{r}
+mod4<-lm(reservation_per_day2$Tot_visitor_day ~ day_reservation+ air_genre_name+longitude+tot_reservation_per_day+mean_visitors_per_day, data=reservation_per_day2)
+
+summary(mod4)
+```
+# validation of the model 2
+
+```{r}
+predictTest2<-predict(mod4, newdata = reservation_per_day2Test)
+
+#Calculation of SSE
+
+sse<-sum((reservation_per_day2Test$Tot_visitor_day-predictTest2)^2)
+
+#Calculation of the average of Tot visi per day in the Test set
+
+ybar2<- mean(reservation_per_day2Test$Tot_visitor_day)
+
+#Calculation of SST
+
+sst<-sum((reservation_per_day2Test$Tot_visitor_day-ybar2)^2)
+
+#Calculation of R-squared
+
+rsquared2<- (1-(sse/sst))
+
+rsquared2
+```
 

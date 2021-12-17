@@ -1,0 +1,830 @@
+"","ID","air_genre_name","air_area_name","latitude","longitude"
+"1","restaurant_ 1","Italian/French","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"2","restaurant_ 2","Italian/French","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"3","restaurant_ 3","Italian/French","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"4","restaurant_ 4","Italian/French","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"5","restaurant_ 5","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"6","restaurant_ 6","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"7","restaurant_ 7","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"8","restaurant_ 8","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"9","restaurant_ 9","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"10","restaurant_ 10","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"11","restaurant_ 11","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"12","restaurant_ 12","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"13","restaurant_ 13","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"14","restaurant_ 14","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"15","restaurant_ 15","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"16","restaurant_ 16","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"17","restaurant_ 17","Italian/French","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"18","restaurant_ 18","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"19","restaurant_ 19","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"20","restaurant_ 20","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"21","restaurant_ 21","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"22","restaurant_ 22","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"23","restaurant_ 23","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"24","restaurant_ 24","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"25","restaurant_ 25","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"26","restaurant_ 26","Italian/French","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"27","restaurant_ 27","Italian/French","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"28","restaurant_ 28","Italian/French","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"29","restaurant_ 29","Italian/French","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"30","restaurant_ 30","Italian/French","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"31","restaurant_ 31","Italian/French","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"32","restaurant_ 32","Italian/French","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"33","restaurant_ 33","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"34","restaurant_ 34","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"35","restaurant_ 35","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"36","restaurant_ 36","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"37","restaurant_ 37","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"38","restaurant_ 38","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"39","restaurant_ 39","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"40","restaurant_ 40","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"41","restaurant_ 41","Italian/French","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"42","restaurant_ 42","Italian/French","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"43","restaurant_ 43","Italian/French","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"44","restaurant_ 44","Italian/French","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"45","restaurant_ 45","Italian/French","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"46","restaurant_ 46","Italian/French","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"47","restaurant_ 47","Italian/French","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"48","restaurant_ 48","Italian/French","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"49","restaurant_ 49","Italian/French","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"50","restaurant_ 50","Italian/French","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"51","restaurant_ 51","Italian/French","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"52","restaurant_ 52","Italian/French","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"53","restaurant_ 53","Italian/French","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"54","restaurant_ 54","Italian/French","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"55","restaurant_ 55","Italian/French","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"56","restaurant_ 56","Italian/French","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"57","restaurant_ 57","Italian/French","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"58","restaurant_ 58","Italian/French","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"59","restaurant_ 59","Italian/French","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"60","restaurant_ 60","Italian/French","Osaka-fu Suita-shi Izumicho",34.7594526,135.51686
+"61","restaurant_ 61","Italian/French","Osaka-fu Suita-shi Izumicho",34.7594526,135.51686
+"62","restaurant_ 62","Italian/French","Tokyo-to Tachikawa-shi Izumicho",35.7140142,139.4078431
+"63","restaurant_ 63","Italian/French","Tokyo-to Tachikawa-shi Izumicho",35.7140142,139.4078431
+"64","restaurant_ 64","Italian/French","Tokyo-to Tachikawa-shi Izumicho",35.7140142,139.4078431
+"65","restaurant_ 65","Italian/French","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"66","restaurant_ 66","Italian/French","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"67","restaurant_ 67","Italian/French","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"68","restaurant_ 68","Italian/French","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"69","restaurant_ 69","Italian/French","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"70","restaurant_ 70","Italian/French","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"71","restaurant_ 71","Italian/French","Tokyo-to Minato-ku Akasaka",35.6749184,139.736775
+"72","restaurant_ 72","Italian/French","Tokyo-to Minato-ku Akasaka",35.6749184,139.736775
+"73","restaurant_ 73","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"74","restaurant_ 74","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"75","restaurant_ 75","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"76","restaurant_ 76","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"77","restaurant_ 77","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"78","restaurant_ 78","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"79","restaurant_ 79","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"80","restaurant_ 80","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"81","restaurant_ 81","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"82","restaurant_ 82","Italian/French","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"83","restaurant_ 83","Italian/French","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"84","restaurant_ 84","Italian/French","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"85","restaurant_ 85","Italian/French","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"86","restaurant_ 86","Italian/French","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"87","restaurant_ 87","Italian/French","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"88","restaurant_ 88","Italian/French","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"89","restaurant_ 89","Italian/French","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"90","restaurant_ 90","Italian/French","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"91","restaurant_ 91","Italian/French","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"92","restaurant_ 92","Italian/French","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"93","restaurant_ 93","Italian/French","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"94","restaurant_ 94","Italian/French","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"95","restaurant_ 95","Italian/French","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"96","restaurant_ 96","Italian/French","Tokyo-to Ota-ku Kamiikedai",35.602201,139.6976891
+"97","restaurant_ 97","Italian/French","Tokyo-to Ota-ku Kamiikedai",35.602201,139.6976891
+"98","restaurant_ 98","Italian/French","Hyogo-ken Nishinomiya-shi Rokutanjicho",34.7375965,135.3415643
+"99","restaurant_ 99","Italian/French","Hyogo-ken Nishinomiya-shi Rokutanjicho",34.7375965,135.3415643
+"100","restaurant_ 100","Italian/French","Hyogo-ken Nishinomiya-shi Rokutanjicho",34.7375965,135.3415643
+"101","restaurant_ 101","Italian/French","Tokyo-to Meguro-ku Takaban",35.629564,139.6849922
+"102","restaurant_ 102","Italian/French","Tokyo-to Meguro-ku Takaban",35.629564,139.6849922
+"103","restaurant_ 103","Dining bar","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"104","restaurant_ 104","Dining bar","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"105","restaurant_ 105","Dining bar","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"106","restaurant_ 106","Dining bar","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"107","restaurant_ 107","Dining bar","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"108","restaurant_ 108","Dining bar","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"109","restaurant_ 109","Dining bar","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"110","restaurant_ 110","Dining bar","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"111","restaurant_ 111","Dining bar","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"112","restaurant_ 112","Dining bar","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"113","restaurant_ 113","Dining bar","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"114","restaurant_ 114","Dining bar","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"115","restaurant_ 115","Dining bar","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"116","restaurant_ 116","Dining bar","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"117","restaurant_ 117","Dining bar","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"118","restaurant_ 118","Dining bar","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"119","restaurant_ 119","Dining bar","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"120","restaurant_ 120","Dining bar","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"121","restaurant_ 121","Dining bar","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"122","restaurant_ 122","Dining bar","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"123","restaurant_ 123","Dining bar","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"124","restaurant_ 124","Dining bar","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"125","restaurant_ 125","Dining bar","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"126","restaurant_ 126","Dining bar","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"127","restaurant_ 127","Dining bar","Tokyo-to Adachi-ku Chuohoncho",35.7756644,139.8044788
+"128","restaurant_ 128","Dining bar","Tokyo-to Adachi-ku Chuohoncho",35.7756644,139.8044788
+"129","restaurant_ 129","Dining bar","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"130","restaurant_ 130","Dining bar","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"131","restaurant_ 131","Dining bar","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"132","restaurant_ 132","Dining bar","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"133","restaurant_ 133","Dining bar","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"134","restaurant_ 134","Dining bar","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"135","restaurant_ 135","Dining bar","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"136","restaurant_ 136","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"137","restaurant_ 137","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"138","restaurant_ 138","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"139","restaurant_ 139","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"140","restaurant_ 140","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"141","restaurant_ 141","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"142","restaurant_ 142","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"143","restaurant_ 143","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"144","restaurant_ 144","Dining bar","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"145","restaurant_ 145","Dining bar","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"146","restaurant_ 146","Dining bar","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"147","restaurant_ 147","Dining bar","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"148","restaurant_ 148","Dining bar","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"149","restaurant_ 149","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"150","restaurant_ 150","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"151","restaurant_ 151","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"152","restaurant_ 152","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"153","restaurant_ 153","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"154","restaurant_ 154","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"155","restaurant_ 155","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"156","restaurant_ 156","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"157","restaurant_ 157","Dining bar","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"158","restaurant_ 158","Dining bar","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"159","restaurant_ 159","Dining bar","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"160","restaurant_ 160","Dining bar","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"161","restaurant_ 161","Dining bar","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"162","restaurant_ 162","Dining bar","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"163","restaurant_ 163","Dining bar","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"164","restaurant_ 164","Dining bar","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"165","restaurant_ 165","Dining bar","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"166","restaurant_ 166","Dining bar","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"167","restaurant_ 167","Dining bar","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"168","restaurant_ 168","Dining bar","Tokyo-to Tachikawa-shi Izumicho",35.7140142,139.4078431
+"169","restaurant_ 169","Dining bar","Tokyo-to Tachikawa-shi Izumicho",35.7140142,139.4078431
+"170","restaurant_ 170","Dining bar","Tokyo-to Tachikawa-shi Izumicho",35.7140142,139.4078431
+"171","restaurant_ 171","Dining bar","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"172","restaurant_ 172","Dining bar","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"173","restaurant_ 173","Dining bar","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"174","restaurant_ 174","Dining bar","Fukuoka-ken Kurume-shi Jonanmachi",33.3192865,130.5083735
+"175","restaurant_ 175","Dining bar","Fukuoka-ken Kurume-shi Jonanmachi",33.3192865,130.5083735
+"176","restaurant_ 176","Dining bar","Fukuoka-ken Kurume-shi Jonanmachi",33.3192865,130.5083735
+"177","restaurant_ 177","Dining bar","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"178","restaurant_ 178","Dining bar","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"179","restaurant_ 179","Dining bar","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"180","restaurant_ 180","Dining bar","Tokyo-to Machida-shi Morino",35.546631,139.4386186
+"181","restaurant_ 181","Dining bar","Tokyo-to Machida-shi Morino",35.546631,139.4386186
+"182","restaurant_ 182","Dining bar","Tokyo-to Machida-shi Morino",35.546631,139.4386186
+"183","restaurant_ 183","Dining bar","Tokyo-to Machida-shi Morino",35.546631,139.4386186
+"184","restaurant_ 184","Dining bar","Tokyo-to Minato-ku Akasaka",35.6749184,139.736775
+"185","restaurant_ 185","Dining bar","Tokyo-to Minato-ku Akasaka",35.6749184,139.736775
+"186","restaurant_ 186","Dining bar","Tokyo-to Musashino-shi Midoricho",35.7177841,139.56626
+"187","restaurant_ 187","Dining bar","Tokyo-to Musashino-shi Midoricho",35.7177841,139.56626
+"188","restaurant_ 188","Dining bar","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"189","restaurant_ 189","Dining bar","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"190","restaurant_ 190","Dining bar","Tokyo-to Nerima-ku Toyotamakita",35.7356234,139.6516577
+"191","restaurant_ 191","Dining bar","Tokyo-to Nerima-ku Toyotamakita",35.7356234,139.6516577
+"192","restaurant_ 192","Dining bar","Fukuoka-ken Kitakyushu-shi Otemachi",33.8808817,130.8734191
+"193","restaurant_ 193","Dining bar","Fukuoka-ken Kitakyushu-shi Otemachi",33.8808817,130.8734191
+"194","restaurant_ 194","Dining bar","Tokyo-to Toshima-ku Minamiikebukuro",35.7261178,139.7166049
+"195","restaurant_ 195","Dining bar","Tokyo-to Toshima-ku Minamiikebukuro",35.7261178,139.7166049
+"196","restaurant_ 196","Dining bar","Tokyo-to Shinagawa-ku Hiromachi",35.6092261,139.7301861
+"197","restaurant_ 197","Dining bar","Tokyo-to Shinagawa-ku Hiromachi",35.6092261,139.7301861
+"198","restaurant_ 198","Dining bar","Tokyo-to Shinagawa-ku Hiromachi",35.6092261,139.7301861
+"199","restaurant_ 199","Dining bar","Osaka-fu Osaka-shi Nakanocho",34.7012792,135.5280905
+"200","restaurant_ 200","Dining bar","Osaka-fu Osaka-shi Nakanocho",34.7012792,135.5280905
+"201","restaurant_ 201","Dining bar","Tokyo-to Toshima-ku Sugamo",35.7379419,139.7310979
+"202","restaurant_ 202","Dining bar","Tokyo-to Toshima-ku Sugamo",35.7379419,139.7310979
+"203","restaurant_ 203","Dining bar","Tokyo-to Setagaya-ku Kitazawa",35.662665,139.6682677
+"204","restaurant_ 204","Dining bar","Tokyo-to Setagaya-ku Kitazawa",35.662665,139.6682677
+"205","restaurant_ 205","Dining bar","Hokkaido Sapporo-shi Kita 24 Jonishi",43.0908503,141.3408314
+"206","restaurant_ 206","Dining bar","Hokkaido Sapporo-shi Kita 24 Jonishi",43.0908503,141.3408314
+"207","restaurant_ 207","Dining bar","Fukuoka-ken Fukuoka-shi Tenjin",33.5902074,130.3976602
+"208","restaurant_ 208","Dining bar","Fukuoka-ken Fukuoka-shi Tenjin",33.5902074,130.3976602
+"209","restaurant_ 209","Dining bar","Fukuoka-ken Fukuoka-shi Takatori",33.5808273,130.3507639
+"210","restaurant_ 210","Dining bar","Fukuoka-ken Fukuoka-shi Takatori",33.5808273,130.3507639
+"211","restaurant_ 211","Yakiniku/Korean food","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"212","restaurant_ 212","Yakiniku/Korean food","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"213","restaurant_ 213","Yakiniku/Korean food","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"214","restaurant_ 214","Yakiniku/Korean food","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"215","restaurant_ 215","Yakiniku/Korean food","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"216","restaurant_ 216","Yakiniku/Korean food","Hokkaido Sapporo-shi Atsubetsuchuo 1 Jo",43.0364075,141.4747892
+"217","restaurant_ 217","Yakiniku/Korean food","Hokkaido Sapporo-shi Atsubetsuchuo 1 Jo",43.0364075,141.4747892
+"218","restaurant_ 218","Yakiniku/Korean food","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"219","restaurant_ 219","Yakiniku/Korean food","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"220","restaurant_ 220","Yakiniku/Korean food","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"221","restaurant_ 221","Yakiniku/Korean food","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"222","restaurant_ 222","Yakiniku/Korean food","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"223","restaurant_ 223","Yakiniku/Korean food","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"224","restaurant_ 224","Yakiniku/Korean food","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"225","restaurant_ 225","Yakiniku/Korean food","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"226","restaurant_ 226","Yakiniku/Korean food","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"227","restaurant_ 227","Yakiniku/Korean food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"228","restaurant_ 228","Yakiniku/Korean food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"229","restaurant_ 229","Yakiniku/Korean food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"230","restaurant_ 230","Yakiniku/Korean food","Hokkaido Abashiri-shi Minami 6 Johigashi",44.0206319,144.2733983
+"231","restaurant_ 231","Yakiniku/Korean food","Hokkaido Abashiri-shi Minami 6 Johigashi",44.0206319,144.2733983
+"232","restaurant_ 232","Yakiniku/Korean food","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"233","restaurant_ 233","Yakiniku/Korean food","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"234","restaurant_ 234","Cafe/Sweets","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"235","restaurant_ 235","Cafe/Sweets","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"236","restaurant_ 236","Cafe/Sweets","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"237","restaurant_ 237","Cafe/Sweets","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"238","restaurant_ 238","Cafe/Sweets","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"239","restaurant_ 239","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"240","restaurant_ 240","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"241","restaurant_ 241","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"242","restaurant_ 242","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"243","restaurant_ 243","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"244","restaurant_ 244","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"245","restaurant_ 245","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"246","restaurant_ 246","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"247","restaurant_ 247","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"248","restaurant_ 248","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"249","restaurant_ 249","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"250","restaurant_ 250","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"251","restaurant_ 251","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"252","restaurant_ 252","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"253","restaurant_ 253","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"254","restaurant_ 254","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"255","restaurant_ 255","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"256","restaurant_ 256","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"257","restaurant_ 257","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"258","restaurant_ 258","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"259","restaurant_ 259","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"260","restaurant_ 260","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"261","restaurant_ 261","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"262","restaurant_ 262","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"263","restaurant_ 263","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"264","restaurant_ 264","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"265","restaurant_ 265","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"266","restaurant_ 266","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"267","restaurant_ 267","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"268","restaurant_ 268","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"269","restaurant_ 269","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"270","restaurant_ 270","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"271","restaurant_ 271","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"272","restaurant_ 272","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"273","restaurant_ 273","Cafe/Sweets","Hyogo-ken Kobe-shi Sumiyoshi Higashimachi",34.7202277,135.265455
+"274","restaurant_ 274","Cafe/Sweets","Hyogo-ken Kobe-shi Sumiyoshi Higashimachi",34.7202277,135.265455
+"275","restaurant_ 275","Cafe/Sweets","Hyogo-ken Kobe-shi Sumiyoshi Higashimachi",34.7202277,135.265455
+"276","restaurant_ 276","Cafe/Sweets","Hyogo-ken Kobe-shi Sumiyoshi Higashimachi",34.7202277,135.265455
+"277","restaurant_ 277","Cafe/Sweets","Tokyo-to Adachi-ku Chuohoncho",35.7756644,139.8044788
+"278","restaurant_ 278","Cafe/Sweets","Tokyo-to Adachi-ku Chuohoncho",35.7756644,139.8044788
+"279","restaurant_ 279","Cafe/Sweets","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"280","restaurant_ 280","Cafe/Sweets","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"281","restaurant_ 281","Cafe/Sweets","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"282","restaurant_ 282","Cafe/Sweets","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"283","restaurant_ 283","Cafe/Sweets","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"284","restaurant_ 284","Cafe/Sweets","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"285","restaurant_ 285","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6427447,139.6413873
+"286","restaurant_ 286","Cafe/Sweets","Tokyo-to Setagaya-ku Setagaya",35.6427447,139.6413873
+"287","restaurant_ 287","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"288","restaurant_ 288","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"289","restaurant_ 289","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"290","restaurant_ 290","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"291","restaurant_ 291","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"292","restaurant_ 292","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"293","restaurant_ 293","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"294","restaurant_ 294","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"295","restaurant_ 295","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"296","restaurant_ 296","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"297","restaurant_ 297","Cafe/Sweets","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"298","restaurant_ 298","Cafe/Sweets","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"299","restaurant_ 299","Cafe/Sweets","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"300","restaurant_ 300","Cafe/Sweets","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"301","restaurant_ 301","Cafe/Sweets","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"302","restaurant_ 302","Cafe/Sweets","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"303","restaurant_ 303","Cafe/Sweets","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"304","restaurant_ 304","Cafe/Sweets","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"305","restaurant_ 305","Cafe/Sweets","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"306","restaurant_ 306","Cafe/Sweets","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"307","restaurant_ 307","Cafe/Sweets","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"308","restaurant_ 308","Cafe/Sweets","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"309","restaurant_ 309","Cafe/Sweets","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"310","restaurant_ 310","Cafe/Sweets","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"311","restaurant_ 311","Cafe/Sweets","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"312","restaurant_ 312","Cafe/Sweets","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"313","restaurant_ 313","Cafe/Sweets","Hokkaido Sapporo-shi Kotoni 2 Jo",43.0744699,141.3008887
+"314","restaurant_ 314","Cafe/Sweets","Hokkaido Sapporo-shi Kotoni 2 Jo",43.0744699,141.3008887
+"315","restaurant_ 315","Cafe/Sweets","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"316","restaurant_ 316","Cafe/Sweets","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"317","restaurant_ 317","Cafe/Sweets","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"318","restaurant_ 318","Cafe/Sweets","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"319","restaurant_ 319","Cafe/Sweets","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"320","restaurant_ 320","Cafe/Sweets","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"321","restaurant_ 321","Cafe/Sweets","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"322","restaurant_ 322","Cafe/Sweets","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"323","restaurant_ 323","Cafe/Sweets","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"324","restaurant_ 324","Cafe/Sweets","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"325","restaurant_ 325","Cafe/Sweets","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"326","restaurant_ 326","Cafe/Sweets","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"327","restaurant_ 327","Cafe/Sweets","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"328","restaurant_ 328","Cafe/Sweets","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"329","restaurant_ 329","Cafe/Sweets","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"330","restaurant_ 330","Cafe/Sweets","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"331","restaurant_ 331","Cafe/Sweets","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"332","restaurant_ 332","Cafe/Sweets","Tokyo-to Itabashi-ku Itabashi",35.7511648,139.7092437
+"333","restaurant_ 333","Cafe/Sweets","Tokyo-to Itabashi-ku Itabashi",35.7511648,139.7092437
+"334","restaurant_ 334","Cafe/Sweets","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"335","restaurant_ 335","Cafe/Sweets","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"336","restaurant_ 336","Cafe/Sweets","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"337","restaurant_ 337","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Torikai",33.5756863,130.3699764
+"338","restaurant_ 338","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Torikai",33.5756863,130.3699764
+"339","restaurant_ 339","Cafe/Sweets","Shizuoka-ken Numazu-shi Miyukicho",35.0955842,138.8634925
+"340","restaurant_ 340","Cafe/Sweets","Shizuoka-ken Numazu-shi Miyukicho",35.0955842,138.8634925
+"341","restaurant_ 341","Cafe/Sweets","Osaka-fu Osaka-shi Fuminosato",34.638969,135.5184958
+"342","restaurant_ 342","Cafe/Sweets","Osaka-fu Osaka-shi Fuminosato",34.638969,135.5184958
+"343","restaurant_ 343","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Momochi",33.5819411,130.3484363
+"344","restaurant_ 344","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Momochi",33.5819411,130.3484363
+"345","restaurant_ 345","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Momochi",33.5819411,130.3484363
+"346","restaurant_ 346","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Momochi",33.5819411,130.3484363
+"347","restaurant_ 347","Cafe/Sweets","Tokyo-to Meguro-ku Jiyugaoka",35.6092076,139.6693609
+"348","restaurant_ 348","Cafe/Sweets","Tokyo-to Meguro-ku Jiyugaoka",35.6092076,139.6693609
+"349","restaurant_ 349","Cafe/Sweets","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"350","restaurant_ 350","Cafe/Sweets","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"351","restaurant_ 351","Cafe/Sweets","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"352","restaurant_ 352","Cafe/Sweets","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"353","restaurant_ 353","Cafe/Sweets","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"354","restaurant_ 354","Cafe/Sweets","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"355","restaurant_ 355","Cafe/Sweets","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"356","restaurant_ 356","Cafe/Sweets","Fukuoka-ken Itoshima-shi Maebarunishi",33.5573203,130.195555
+"357","restaurant_ 357","Cafe/Sweets","Fukuoka-ken Itoshima-shi Maebarunishi",33.5573203,130.195555
+"358","restaurant_ 358","Cafe/Sweets","Fukuoka-ken Itoshima-shi Maebarunishi",33.5573203,130.195555
+"359","restaurant_ 359","Cafe/Sweets","Fukuoka-ken Itoshima-shi Maebarunishi",33.5573203,130.195555
+"360","restaurant_ 360","Cafe/Sweets","Fukuoka-ken Itoshima-shi Maebarunishi",33.5573203,130.195555
+"361","restaurant_ 361","Cafe/Sweets","Fukuoka-ken Itoshima-shi Maebarunishi",33.5573203,130.195555
+"362","restaurant_ 362","Cafe/Sweets","Fukuoka-ken Itoshima-shi Maebarunishi",33.5573203,130.195555
+"363","restaurant_ 363","Cafe/Sweets","Tokyo-to Musashino-shi Kichijoji Honcho",35.704686,139.5754071
+"364","restaurant_ 364","Cafe/Sweets","Tokyo-to Musashino-shi Kichijoji Honcho",35.704686,139.5754071
+"365","restaurant_ 365","Cafe/Sweets","Hokkaido Kato-gun Motomachi",42.9941431,143.1979595
+"366","restaurant_ 366","Cafe/Sweets","Hokkaido Kato-gun Motomachi",42.9941431,143.1979595
+"367","restaurant_ 367","Cafe/Sweets","Tokyo-to Kita-ku Ojihoncho",35.7528042,139.7334805
+"368","restaurant_ 368","Cafe/Sweets","Tokyo-to Kita-ku Ojihoncho",35.7528042,139.7334805
+"369","restaurant_ 369","Cafe/Sweets","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"370","restaurant_ 370","Cafe/Sweets","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"371","restaurant_ 371","Cafe/Sweets","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"372","restaurant_ 372","Cafe/Sweets","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"373","restaurant_ 373","Cafe/Sweets","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"374","restaurant_ 374","Cafe/Sweets","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"375","restaurant_ 375","Cafe/Sweets","Osaka-fu Osaka-shi Ohiraki",34.6923371,135.4722289
+"376","restaurant_ 376","Cafe/Sweets","Osaka-fu Osaka-shi Ohiraki",34.6923371,135.4722289
+"377","restaurant_ 377","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Shiobaru",33.5615691,130.4264283
+"378","restaurant_ 378","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Shiobaru",33.5615691,130.4264283
+"379","restaurant_ 379","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Shiobaru",33.5615691,130.4264283
+"380","restaurant_ 380","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Shiobaru",33.5615691,130.4264283
+"381","restaurant_ 381","Cafe/Sweets","Tokyo-to Koganei-shi Honcho",35.6994733,139.5029916
+"382","restaurant_ 382","Cafe/Sweets","Tokyo-to Koganei-shi Honcho",35.6994733,139.5029916
+"383","restaurant_ 383","Cafe/Sweets","Hiroshima-ken Fukuyama-shi Higashisakuramachi",34.4858993,133.3623127
+"384","restaurant_ 384","Cafe/Sweets","Hiroshima-ken Fukuyama-shi Higashisakuramachi",34.4858993,133.3623127
+"385","restaurant_ 385","Cafe/Sweets","Tokyo-to Toshima-ku Higashiikebukuro",35.7262319,139.7232404
+"386","restaurant_ 386","Cafe/Sweets","Tokyo-to Toshima-ku Higashiikebukuro",35.7262319,139.7232404
+"387","restaurant_ 387","Cafe/Sweets","Hyogo-ken Nishinomiya-shi Rokutanjicho",34.7375965,135.3415643
+"388","restaurant_ 388","Cafe/Sweets","Hyogo-ken Nishinomiya-shi Rokutanjicho",34.7375965,135.3415643
+"389","restaurant_ 389","Cafe/Sweets","Tokyo-to Shinjuku-ku Nishishinjuku",35.6921398,139.6854735
+"390","restaurant_ 390","Cafe/Sweets","Tokyo-to Shinjuku-ku Nishishinjuku",35.6921398,139.6854735
+"391","restaurant_ 391","Cafe/Sweets","Tokyo-to Bunkyo-ku Kasuga",35.7080677,139.752167
+"392","restaurant_ 392","Cafe/Sweets","Tokyo-to Bunkyo-ku Kasuga",35.7080677,139.752167
+"393","restaurant_ 393","Cafe/Sweets","Tokyo-to Bunkyo-ku Kasuga",35.7080677,139.752167
+"394","restaurant_ 394","Cafe/Sweets","Osaka-fu Sakai-shi Minamikawaramachi",34.5732536,135.4831008
+"395","restaurant_ 395","Cafe/Sweets","Osaka-fu Sakai-shi Minamikawaramachi",34.5732536,135.4831008
+"396","restaurant_ 396","Cafe/Sweets","Tokyo-to Setagaya-ku Okusawa",35.6021252,139.6719581
+"397","restaurant_ 397","Cafe/Sweets","Tokyo-to Setagaya-ku Okusawa",35.6021252,139.6719581
+"398","restaurant_ 398","Cafe/Sweets","Tokyo-to Setagaya-ku Okusawa",35.6021252,139.6719581
+"399","restaurant_ 399","Cafe/Sweets","Tokyo-to Setagaya-ku Okusawa",35.6021252,139.6719581
+"400","restaurant_ 400","Cafe/Sweets","Tokyo-to Setagaya-ku Okusawa",35.6021252,139.6719581
+"401","restaurant_ 401","Cafe/Sweets","Fukuoka-ken Kitakyushu-shi Konyamachi",33.8810679,130.881838
+"402","restaurant_ 402","Cafe/Sweets","Fukuoka-ken Kitakyushu-shi Konyamachi",33.8810679,130.881838
+"403","restaurant_ 403","Cafe/Sweets","Tokyo-to Toshima-ku Minamiikebukuro",35.7248234,139.7159634
+"404","restaurant_ 404","Cafe/Sweets","Tokyo-to Toshima-ku Minamiikebukuro",35.7248234,139.7159634
+"405","restaurant_ 405","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5869938,130.3948938
+"406","restaurant_ 406","Cafe/Sweets","Fukuoka-ken Fukuoka-shi Daimyo",33.5869938,130.3948938
+"407","restaurant_ 407","Cafe/Sweets","Tokyo-to Taito-ku Kuramae",35.7043442,139.7914285
+"408","restaurant_ 408","Cafe/Sweets","Tokyo-to Taito-ku Kuramae",35.7043442,139.7914285
+"409","restaurant_ 409","Cafe/Sweets","Hyogo-ken Takarazuka-shi Toyocho",34.7997673,135.3600729
+"410","restaurant_ 410","Cafe/Sweets","Hyogo-ken Takarazuka-shi Toyocho",34.7997673,135.3600729
+"411","restaurant_ 411","Cafe/Sweets","Tokyo-to Shibuya-ku Jingumae",35.6692904,139.7070557
+"412","restaurant_ 412","Cafe/Sweets","Tokyo-to Shibuya-ku Jingumae",35.6692904,139.7070557
+"413","restaurant_ 413","Cafe/Sweets","Niigata-ken Kashiwazaki-shi Chuocho",37.3718999,138.5589836
+"414","restaurant_ 414","Cafe/Sweets","Niigata-ken Kashiwazaki-shi Chuocho",37.3718999,138.5589836
+"415","restaurant_ 415","Izakaya","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"416","restaurant_ 416","Izakaya","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"417","restaurant_ 417","Izakaya","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"418","restaurant_ 418","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"419","restaurant_ 419","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"420","restaurant_ 420","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"421","restaurant_ 421","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"422","restaurant_ 422","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"423","restaurant_ 423","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"424","restaurant_ 424","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"425","restaurant_ 425","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"426","restaurant_ 426","Izakaya","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"427","restaurant_ 427","Izakaya","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"428","restaurant_ 428","Izakaya","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"429","restaurant_ 429","Izakaya","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"430","restaurant_ 430","Izakaya","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"431","restaurant_ 431","Izakaya","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"432","restaurant_ 432","Izakaya","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"433","restaurant_ 433","Izakaya","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"434","restaurant_ 434","Izakaya","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"435","restaurant_ 435","Izakaya","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"436","restaurant_ 436","Izakaya","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"437","restaurant_ 437","Izakaya","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"438","restaurant_ 438","Izakaya","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"439","restaurant_ 439","Izakaya","Hyogo-ken Kobe-shi Sumiyoshi Higashimachi",34.7202277,135.265455
+"440","restaurant_ 440","Izakaya","Hyogo-ken Kobe-shi Sumiyoshi Higashimachi",34.7202277,135.265455
+"441","restaurant_ 441","Izakaya","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"442","restaurant_ 442","Izakaya","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"443","restaurant_ 443","Izakaya","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"444","restaurant_ 444","Izakaya","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"445","restaurant_ 445","Izakaya","Hyogo-ken Amagasaki-shi Higashinanamatsucho",34.7337339,135.4063757
+"446","restaurant_ 446","Izakaya","Hyogo-ken Amagasaki-shi Higashinanamatsucho",34.7337339,135.4063757
+"447","restaurant_ 447","Izakaya","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"448","restaurant_ 448","Izakaya","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"449","restaurant_ 449","Izakaya","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"450","restaurant_ 450","Izakaya","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"451","restaurant_ 451","Izakaya","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"452","restaurant_ 452","Izakaya","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"453","restaurant_ 453","Izakaya","Tokyo-to Koto-ku Tomioka",35.6712704,139.7969871
+"454","restaurant_ 454","Izakaya","Tokyo-to Koto-ku Tomioka",35.6712704,139.7969871
+"455","restaurant_ 455","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"456","restaurant_ 456","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"457","restaurant_ 457","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"458","restaurant_ 458","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"459","restaurant_ 459","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"460","restaurant_ 460","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"461","restaurant_ 461","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"462","restaurant_ 462","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"463","restaurant_ 463","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"464","restaurant_ 464","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"465","restaurant_ 465","Izakaya","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"466","restaurant_ 466","Izakaya","Niigata-ken Niigata-shi Gakkochodori 1 Bancho",37.9163674,139.0363265
+"467","restaurant_ 467","Izakaya","Niigata-ken Niigata-shi Gakkochodori 1 Bancho",37.9163674,139.0363265
+"468","restaurant_ 468","Izakaya","Niigata-ken Niigata-shi Gakkochodori 1 Bancho",37.9163674,139.0363265
+"469","restaurant_ 469","Izakaya","Niigata-ken Niigata-shi Gakkochodori 1 Bancho",37.9163674,139.0363265
+"470","restaurant_ 470","Izakaya","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"471","restaurant_ 471","Izakaya","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"472","restaurant_ 472","Izakaya","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"473","restaurant_ 473","Izakaya","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"474","restaurant_ 474","Izakaya","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"475","restaurant_ 475","Izakaya","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"476","restaurant_ 476","Izakaya","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"477","restaurant_ 477","Izakaya","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"478","restaurant_ 478","Izakaya","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"479","restaurant_ 479","Izakaya","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"480","restaurant_ 480","Izakaya","Tokyo-to Ota-ku Kamata",35.5612568,139.7160511
+"481","restaurant_ 481","Izakaya","Tokyo-to Ota-ku Kamata",35.5612568,139.7160511
+"482","restaurant_ 482","Izakaya","Tokyo-to Ota-ku Kamata",35.5612568,139.7160511
+"483","restaurant_ 483","Izakaya","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"484","restaurant_ 484","Izakaya","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"485","restaurant_ 485","Izakaya","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"486","restaurant_ 486","Izakaya","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"487","restaurant_ 487","Izakaya","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"488","restaurant_ 488","Izakaya","Hokkaido Sapporo-shi Kotoni 2 Jo",43.0744699,141.3008887
+"489","restaurant_ 489","Izakaya","Hokkaido Sapporo-shi Kotoni 2 Jo",43.0744699,141.3008887
+"490","restaurant_ 490","Izakaya","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"491","restaurant_ 491","Izakaya","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"492","restaurant_ 492","Izakaya","Niigata-ken Niigata-shi Teraohigashi",37.8742227,138.9719402
+"493","restaurant_ 493","Izakaya","Niigata-ken Niigata-shi Teraohigashi",37.8742227,138.9719402
+"494","restaurant_ 494","Izakaya","Niigata-ken Niigata-shi Teraohigashi",37.8742227,138.9719402
+"495","restaurant_ 495","Izakaya","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"496","restaurant_ 496","Izakaya","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"497","restaurant_ 497","Izakaya","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"498","restaurant_ 498","Izakaya","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"499","restaurant_ 499","Izakaya","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"500","restaurant_ 500","Izakaya","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"501","restaurant_ 501","Izakaya","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"502","restaurant_ 502","Izakaya","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"503","restaurant_ 503","Izakaya","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"504","restaurant_ 504","Izakaya","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"505","restaurant_ 505","Izakaya","Fukuoka-ken Kitakyushu-shi None",33.8664649,130.7649232
+"506","restaurant_ 506","Izakaya","Fukuoka-ken Kitakyushu-shi None",33.8664649,130.7649232
+"507","restaurant_ 507","Izakaya","Fukuoka-ken Kitakyushu-shi None",33.8664649,130.7649232
+"508","restaurant_ 508","Izakaya","Fukuoka-ken Kurume-shi Jonanmachi",33.3192865,130.5083735
+"509","restaurant_ 509","Izakaya","Fukuoka-ken Kurume-shi Jonanmachi",33.3192865,130.5083735
+"510","restaurant_ 510","Izakaya","Fukuoka-ken Kurume-shi Jonanmachi",33.3192865,130.5083735
+"511","restaurant_ 511","Izakaya","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"512","restaurant_ 512","Izakaya","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"513","restaurant_ 513","Izakaya","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"514","restaurant_ 514","Izakaya","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"515","restaurant_ 515","Izakaya","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"516","restaurant_ 516","Izakaya","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"517","restaurant_ 517","Izakaya","Tokyo-to Koto-ku Toyo",35.6728535,139.8174097
+"518","restaurant_ 518","Izakaya","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"519","restaurant_ 519","Izakaya","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"520","restaurant_ 520","Izakaya","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"521","restaurant_ 521","Izakaya","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"522","restaurant_ 522","Izakaya","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"523","restaurant_ 523","Izakaya","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"524","restaurant_ 524","Izakaya","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"525","restaurant_ 525","Izakaya","Tokyo-to Minato-ku Akasaka",35.6749184,139.736775
+"526","restaurant_ 526","Izakaya","Tokyo-to Minato-ku Akasaka",35.6749184,139.736775
+"527","restaurant_ 527","Izakaya","Tokyo-to Minato-ku Akasaka",35.6749184,139.736775
+"528","restaurant_ 528","Izakaya","Tokyo-to Minato-ku Akasaka",35.6749184,139.736775
+"529","restaurant_ 529","Izakaya","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"530","restaurant_ 530","Izakaya","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"531","restaurant_ 531","Izakaya","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"532","restaurant_ 532","Izakaya","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"533","restaurant_ 533","Izakaya","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"534","restaurant_ 534","Izakaya","Tokyo-to Itabashi-ku Itabashi",35.7511648,139.7092437
+"535","restaurant_ 535","Izakaya","Tokyo-to Itabashi-ku Itabashi",35.7511648,139.7092437
+"536","restaurant_ 536","Izakaya","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"537","restaurant_ 537","Izakaya","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"538","restaurant_ 538","Izakaya","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"539","restaurant_ 539","Izakaya","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"540","restaurant_ 540","Izakaya","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"541","restaurant_ 541","Izakaya","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"542","restaurant_ 542","Izakaya","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"543","restaurant_ 543","Izakaya","Hyogo-ken Kakogawa-shi Kakogawacho Kitazaike",34.7569503,134.8411775
+"544","restaurant_ 544","Izakaya","Tokyo-to Bunkyo-ku Sendagi",35.7268018,139.7581383
+"545","restaurant_ 545","Izakaya","Tokyo-to Bunkyo-ku Sendagi",35.7268018,139.7581383
+"546","restaurant_ 546","Izakaya","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"547","restaurant_ 547","Izakaya","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"548","restaurant_ 548","Izakaya","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"549","restaurant_ 549","Izakaya","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"550","restaurant_ 550","Izakaya","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"551","restaurant_ 551","Izakaya","Fukuoka-ken Fukuoka-shi Torikai",33.5756863,130.3699764
+"552","restaurant_ 552","Izakaya","Fukuoka-ken Fukuoka-shi Torikai",33.5756863,130.3699764
+"553","restaurant_ 553","Izakaya","Tokyo-to Nerima-ku Toyotamakita",35.7356234,139.6516577
+"554","restaurant_ 554","Izakaya","Tokyo-to Nerima-ku Toyotamakita",35.7356234,139.6516577
+"555","restaurant_ 555","Izakaya","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"556","restaurant_ 556","Izakaya","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"557","restaurant_ 557","Izakaya","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"558","restaurant_ 558","Izakaya","Tokyo-to Fuchu-shi Miyanishicho",35.6689735,139.4776614
+"559","restaurant_ 559","Izakaya","Tokyo-to Fuchu-shi Miyanishicho",35.6689735,139.4776614
+"560","restaurant_ 560","Izakaya","Shizuoka-ken Shizuoka-shi Otemachi",34.9751398,138.3832429
+"561","restaurant_ 561","Izakaya","Shizuoka-ken Shizuoka-shi Otemachi",34.9751398,138.3832429
+"562","restaurant_ 562","Izakaya","Shizuoka-ken Shizuoka-shi Otemachi",34.9751398,138.3832429
+"563","restaurant_ 563","Izakaya","Niigata-ken Nagaoka-shi Otedori",37.4462652,138.8512772
+"564","restaurant_ 564","Izakaya","Niigata-ken Nagaoka-shi Otedori",37.4462652,138.8512772
+"565","restaurant_ 565","Izakaya","Osaka-fu Osaka-shi Ohiraki",34.6923371,135.4722289
+"566","restaurant_ 566","Izakaya","Osaka-fu Osaka-shi Ohiraki",34.6923371,135.4722289
+"567","restaurant_ 567","Izakaya","Fukuoka-ken Fukuoka-shi Shiobaru",33.5615691,130.4264283
+"568","restaurant_ 568","Izakaya","Fukuoka-ken Fukuoka-shi Shiobaru",33.5615691,130.4264283
+"569","restaurant_ 569","Izakaya","Fukuoka-ken Fukuoka-shi Shiobaru",33.5615691,130.4264283
+"570","restaurant_ 570","Izakaya","Tokyo-to Katsushika-ku Tateishi",35.7435748,139.8471797
+"571","restaurant_ 571","Izakaya","Tokyo-to Katsushika-ku Tateishi",35.7435748,139.8471797
+"572","restaurant_ 572","Izakaya","Tokyo-to Ota-ku Kamiikedai",35.602201,139.6976891
+"573","restaurant_ 573","Izakaya","Tokyo-to Ota-ku Kamiikedai",35.602201,139.6976891
+"574","restaurant_ 574","Izakaya","Tokyo-to Taito-ku Asakusa",35.7118769,139.7966971
+"575","restaurant_ 575","Izakaya","Tokyo-to Taito-ku Asakusa",35.7118769,139.7966971
+"576","restaurant_ 576","Izakaya","Tokyo-to Taito-ku Asakusa",35.7118769,139.7966971
+"577","restaurant_ 577","Izakaya","Tokyo-to Taito-ku Asakusa",35.7118769,139.7966971
+"578","restaurant_ 578","Izakaya","Osaka-fu Higashiosaka-shi Aramotokita",34.6793301,135.6010123
+"579","restaurant_ 579","Izakaya","Osaka-fu Higashiosaka-shi Aramotokita",34.6793301,135.6010123
+"580","restaurant_ 580","Izakaya","Tokyo-to Koto-ku Kameido",35.6995366,139.8265727
+"581","restaurant_ 581","Izakaya","Tokyo-to Koto-ku Kameido",35.6995366,139.8265727
+"582","restaurant_ 582","Izakaya","Tokyo-to Edogawa-ku Chuo",35.7066569,139.8684267
+"583","restaurant_ 583","Izakaya","Tokyo-to Edogawa-ku Chuo",35.7066569,139.8684267
+"584","restaurant_ 584","Izakaya","Hiroshima-ken Fukuyama-shi Higashisakuramachi",34.4858993,133.3623127
+"585","restaurant_ 585","Izakaya","Hiroshima-ken Fukuyama-shi Higashisakuramachi",34.4858993,133.3623127
+"586","restaurant_ 586","Izakaya","Hiroshima-ken Fukuyama-shi Higashisakuramachi",34.4858993,133.3623127
+"587","restaurant_ 587","Izakaya","Hiroshima-ken Fukuyama-shi Higashisakuramachi",34.4858993,133.3623127
+"588","restaurant_ 588","Izakaya","Hiroshima-ken Fukuyama-shi Higashisakuramachi",34.4858993,133.3623127
+"589","restaurant_ 589","Izakaya","Tokyo-to Setagaya-ku Sangenjaya",35.6429619,139.6700376
+"590","restaurant_ 590","Izakaya","Tokyo-to Setagaya-ku Sangenjaya",35.6429619,139.6700376
+"591","restaurant_ 591","Izakaya","Tokyo-to Toshima-ku Mejiro",35.7253002,139.6961875
+"592","restaurant_ 592","Izakaya","Tokyo-to Toshima-ku Mejiro",35.7253002,139.6961875
+"593","restaurant_ 593","Izakaya","Hyogo-ken Kobe-shi Motomachidori",34.6882414,135.1872537
+"594","restaurant_ 594","Izakaya","Hyogo-ken Kobe-shi Motomachidori",34.6882414,135.1872537
+"595","restaurant_ 595","Izakaya","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"596","restaurant_ 596","Izakaya","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"597","restaurant_ 597","Izakaya","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"598","restaurant_ 598","Izakaya","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"599","restaurant_ 599","Izakaya","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"600","restaurant_ 600","Izakaya","Tokyo-to Shinagawa-ku Higashigotanda",35.6265683,139.7258581
+"601","restaurant_ 601","Izakaya","Tokyo-to Shinagawa-ku Higashigotanda",35.6265683,139.7258581
+"602","restaurant_ 602","Izakaya","Hiroshima-ken Hiroshima-shi Nagarekawacho",34.3889694,132.4630947
+"603","restaurant_ 603","Izakaya","Hiroshima-ken Hiroshima-shi Nagarekawacho",34.3889694,132.4630947
+"604","restaurant_ 604","Izakaya","Fukuoka-ken Fukuoka-shi Imaizumi",33.5858162,130.3986935
+"605","restaurant_ 605","Izakaya","Fukuoka-ken Fukuoka-shi Imaizumi",33.5858162,130.3986935
+"606","restaurant_ 606","Izakaya","Osaka-fu Osaka-shi Nanbasennichimae",34.6647437,135.5034436
+"607","restaurant_ 607","Izakaya","Osaka-fu Osaka-shi Nanbasennichimae",34.6647437,135.5034436
+"608","restaurant_ 608","Izakaya","Tokyo-to Chiyoda-ku Kanda Jinbocho",35.6956944,139.7593864
+"609","restaurant_ 609","Izakaya","Tokyo-to Chiyoda-ku Kanda Jinbocho",35.6956944,139.7593864
+"610","restaurant_ 610","Izakaya","Hyogo-ken Takarazuka-shi Toyocho",34.7997673,135.3600729
+"611","restaurant_ 611","Izakaya","Hyogo-ken Takarazuka-shi Toyocho",34.7997673,135.3600729
+"612","restaurant_ 612","Okonomiyaki/Monja/Teppanyaki","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"613","restaurant_ 613","Okonomiyaki/Monja/Teppanyaki","Hyogo-ken Kobe-shi Kumoidori",34.6951242,135.1978525
+"614","restaurant_ 614","Okonomiyaki/Monja/Teppanyaki","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"615","restaurant_ 615","Okonomiyaki/Monja/Teppanyaki","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"616","restaurant_ 616","Okonomiyaki/Monja/Teppanyaki","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"617","restaurant_ 617","Okonomiyaki/Monja/Teppanyaki","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"618","restaurant_ 618","Okonomiyaki/Monja/Teppanyaki","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"619","restaurant_ 619","Okonomiyaki/Monja/Teppanyaki","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"620","restaurant_ 620","Okonomiyaki/Monja/Teppanyaki","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"621","restaurant_ 621","Okonomiyaki/Monja/Teppanyaki","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"622","restaurant_ 622","Okonomiyaki/Monja/Teppanyaki","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"623","restaurant_ 623","Okonomiyaki/Monja/Teppanyaki","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"624","restaurant_ 624","Okonomiyaki/Monja/Teppanyaki","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"625","restaurant_ 625","Okonomiyaki/Monja/Teppanyaki","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"626","restaurant_ 626","Bar/Cocktail","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"627","restaurant_ 627","Bar/Cocktail","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"628","restaurant_ 628","Bar/Cocktail","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"629","restaurant_ 629","Bar/Cocktail","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"630","restaurant_ 630","Bar/Cocktail","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"631","restaurant_ 631","Bar/Cocktail","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"632","restaurant_ 632","Bar/Cocktail","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"633","restaurant_ 633","Bar/Cocktail","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"634","restaurant_ 634","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"635","restaurant_ 635","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"636","restaurant_ 636","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"637","restaurant_ 637","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"638","restaurant_ 638","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"639","restaurant_ 639","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"640","restaurant_ 640","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"641","restaurant_ 641","Bar/Cocktail","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"642","restaurant_ 642","Bar/Cocktail","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"643","restaurant_ 643","Bar/Cocktail","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"644","restaurant_ 644","Bar/Cocktail","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"645","restaurant_ 645","Bar/Cocktail","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"646","restaurant_ 646","Bar/Cocktail","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"647","restaurant_ 647","Bar/Cocktail","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"648","restaurant_ 648","Bar/Cocktail","Hokkaido Asahikawa-shi 6 Jodori",43.7706355,142.364819
+"649","restaurant_ 649","Bar/Cocktail","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"650","restaurant_ 650","Bar/Cocktail","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"651","restaurant_ 651","Bar/Cocktail","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"652","restaurant_ 652","Bar/Cocktail","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"653","restaurant_ 653","Bar/Cocktail","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"654","restaurant_ 654","Bar/Cocktail","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"655","restaurant_ 655","Bar/Cocktail","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"656","restaurant_ 656","Bar/Cocktail","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"657","restaurant_ 657","Bar/Cocktail","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"658","restaurant_ 658","Bar/Cocktail","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"659","restaurant_ 659","Bar/Cocktail","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"660","restaurant_ 660","Bar/Cocktail","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"661","restaurant_ 661","Bar/Cocktail","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"662","restaurant_ 662","Bar/Cocktail","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"663","restaurant_ 663","Bar/Cocktail","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"664","restaurant_ 664","Bar/Cocktail","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"665","restaurant_ 665","Bar/Cocktail","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"666","restaurant_ 666","Bar/Cocktail","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"667","restaurant_ 667","Bar/Cocktail","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"668","restaurant_ 668","Bar/Cocktail","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"669","restaurant_ 669","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"670","restaurant_ 670","Bar/Cocktail","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"671","restaurant_ 671","Bar/Cocktail","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"672","restaurant_ 672","Bar/Cocktail","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"673","restaurant_ 673","Bar/Cocktail","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"674","restaurant_ 674","Bar/Cocktail","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"675","restaurant_ 675","Bar/Cocktail","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"676","restaurant_ 676","Bar/Cocktail","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"677","restaurant_ 677","Bar/Cocktail","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"678","restaurant_ 678","Bar/Cocktail","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"679","restaurant_ 679","Bar/Cocktail","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"680","restaurant_ 680","Bar/Cocktail","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"681","restaurant_ 681","Bar/Cocktail","Tokyo-to Toshima-ku Minamiikebukuro",35.7261178,139.7166049
+"682","restaurant_ 682","Bar/Cocktail","Tokyo-to Toshima-ku Minamiikebukuro",35.7261178,139.7166049
+"683","restaurant_ 683","Bar/Cocktail","Tokyo-to Toshima-ku Minamiikebukuro",35.7261178,139.7166049
+"684","restaurant_ 684","Bar/Cocktail","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"685","restaurant_ 685","Bar/Cocktail","Osaka-fu Osaka-shi Kyutaromachi",34.6812614,135.5098009
+"686","restaurant_ 686","Bar/Cocktail","Tokyo-to Shibuya-ku Dogenzaka",35.6593968,139.6964402
+"687","restaurant_ 687","Bar/Cocktail","Tokyo-to Shibuya-ku Dogenzaka",35.6593968,139.6964402
+"688","restaurant_ 688","Bar/Cocktail","Tokyo-to Nakano-ku Nakano",35.7073985,139.6638354
+"689","restaurant_ 689","Bar/Cocktail","Tokyo-to Nakano-ku Nakano",35.7073985,139.6638354
+"690","restaurant_ 690","Bar/Cocktail","Tokyo-to Toshima-ku Higashiikebukuro",35.7262319,139.7232404
+"691","restaurant_ 691","Bar/Cocktail","Tokyo-to Toshima-ku Higashiikebukuro",35.7262319,139.7232404
+"692","restaurant_ 692","Bar/Cocktail","Tokyo-to Toshima-ku Higashiikebukuro",35.7262319,139.7232404
+"693","restaurant_ 693","Bar/Cocktail","Tokyo-to Toshima-ku Nishiikebukuro",35.7322863,139.710247
+"694","restaurant_ 694","Bar/Cocktail","Tokyo-to Toshima-ku Nishiikebukuro",35.7322863,139.710247
+"695","restaurant_ 695","Bar/Cocktail","Tokyo-to Shinjuku-ku Nishishinjuku",35.6921398,139.6854735
+"696","restaurant_ 696","Bar/Cocktail","Tokyo-to Shinjuku-ku Nishishinjuku",35.6921398,139.6854735
+"697","restaurant_ 697","Bar/Cocktail","Tokyo-to Nakano-ku Nakano",35.7081457,139.666288
+"698","restaurant_ 698","Bar/Cocktail","Tokyo-to Nakano-ku Nakano",35.7081457,139.666288
+"699","restaurant_ 699","Bar/Cocktail","Osaka-fu Neyagawa-shi Honmachi",34.7660929,135.6280998
+"700","restaurant_ 700","Bar/Cocktail","Osaka-fu Neyagawa-shi Honmachi",34.7660929,135.6280998
+"701","restaurant_ 701","Bar/Cocktail","Tokyo-to Minato-ku Roppongi",35.6641222,139.729426
+"702","restaurant_ 702","Bar/Cocktail","Tokyo-to Minato-ku Roppongi",35.6641222,139.729426
+"703","restaurant_ 703","Bar/Cocktail","Tokyo-to Toshima-ku Minamiikebukuro",35.7248234,139.7159634
+"704","restaurant_ 704","Bar/Cocktail","Tokyo-to Toshima-ku Minamiikebukuro",35.7248234,139.7159634
+"705","restaurant_ 705","Japanese food","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"706","restaurant_ 706","Japanese food","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"707","restaurant_ 707","Japanese food","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"708","restaurant_ 708","Japanese food","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"709","restaurant_ 709","Japanese food","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"710","restaurant_ 710","Japanese food","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"711","restaurant_ 711","Japanese food","Tokyo-to Minato-ku Shibakoen",35.6580681,139.7515992
+"712","restaurant_ 712","Japanese food","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"713","restaurant_ 713","Japanese food","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"714","restaurant_ 714","Japanese food","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"715","restaurant_ 715","Japanese food","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"716","restaurant_ 716","Japanese food","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"717","restaurant_ 717","Japanese food","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"718","restaurant_ 718","Japanese food","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"719","restaurant_ 719","Japanese food","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"720","restaurant_ 720","Japanese food","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"721","restaurant_ 721","Japanese food","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"722","restaurant_ 722","Japanese food","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"723","restaurant_ 723","Japanese food","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"724","restaurant_ 724","Japanese food","Hiroshima-ken Hiroshima-shi Kokutaijimachi",34.3862445,132.4550176
+"725","restaurant_ 725","Japanese food","Niigata-ken Niigata-shi Gakkochodori 1 Bancho",37.9163674,139.0363265
+"726","restaurant_ 726","Japanese food","Niigata-ken Niigata-shi Gakkochodori 1 Bancho",37.9163674,139.0363265
+"727","restaurant_ 727","Japanese food","Niigata-ken Niigata-shi Gakkochodori 1 Bancho",37.9163674,139.0363265
+"728","restaurant_ 728","Japanese food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0568187,141.3539573
+"729","restaurant_ 729","Japanese food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0568187,141.3539573
+"730","restaurant_ 730","Japanese food","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"731","restaurant_ 731","Japanese food","Tokyo-to Chuo-ku Ginza",35.6721142,139.7708253
+"732","restaurant_ 732","Japanese food","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"733","restaurant_ 733","Japanese food","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"734","restaurant_ 734","Japanese food","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"735","restaurant_ 735","Japanese food","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"736","restaurant_ 736","Japanese food","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"737","restaurant_ 737","Japanese food","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"738","restaurant_ 738","Japanese food","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"739","restaurant_ 739","Japanese food","Miyagi-ken Sendai-shi Kamisugi",38.2690761,140.8704029
+"740","restaurant_ 740","Japanese food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"741","restaurant_ 741","Japanese food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"742","restaurant_ 742","Japanese food","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"743","restaurant_ 743","Japanese food","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"744","restaurant_ 744","Japanese food","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"745","restaurant_ 745","Japanese food","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"746","restaurant_ 746","Japanese food","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"747","restaurant_ 747","Japanese food","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"748","restaurant_ 748","Japanese food","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"749","restaurant_ 749","Japanese food","Fukuoka-ken Fukuoka-shi Momochi",33.5819411,130.3484363
+"750","restaurant_ 750","Japanese food","Fukuoka-ken Fukuoka-shi Momochi",33.5819411,130.3484363
+"751","restaurant_ 751","Japanese food","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"752","restaurant_ 752","Japanese food","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"753","restaurant_ 753","Japanese food","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"754","restaurant_ 754","Japanese food","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"755","restaurant_ 755","Japanese food","Fukuoka-ken Kitakyushu-shi Otemachi",33.8808817,130.8734191
+"756","restaurant_ 756","Japanese food","Fukuoka-ken Kitakyushu-shi Otemachi",33.8808817,130.8734191
+"757","restaurant_ 757","Japanese food","Tokyo-to Toshima-ku Minamiikebukuro",35.7261178,139.7166049
+"758","restaurant_ 758","Japanese food","Tokyo-to Toshima-ku Minamiikebukuro",35.7261178,139.7166049
+"759","restaurant_ 759","Japanese food","Tokyo-to Toshima-ku Minamiikebukuro",35.7261178,139.7166049
+"760","restaurant_ 760","Japanese food","Tokyo-to Shinagawa-ku Hiromachi",35.6092261,139.7301861
+"761","restaurant_ 761","Japanese food","Tokyo-to Shinagawa-ku Hiromachi",35.6092261,139.7301861
+"762","restaurant_ 762","Japanese food","Fukuoka-ken Yame-shi Motomachi",33.2119674,130.5579082
+"763","restaurant_ 763","Japanese food","Fukuoka-ken Yame-shi Motomachi",33.2119674,130.5579082
+"764","restaurant_ 764","Japanese food","Tokyo-to Edogawa-ku Chuo",35.7066569,139.8684267
+"765","restaurant_ 765","Japanese food","Tokyo-to Edogawa-ku Chuo",35.7066569,139.8684267
+"766","restaurant_ 766","Japanese food","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"767","restaurant_ 767","Japanese food","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"768","restaurant_ 768","Creative cuisine","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"769","restaurant_ 769","Creative cuisine","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"770","restaurant_ 770","Creative cuisine","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"771","restaurant_ 771","Creative cuisine","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"772","restaurant_ 772","Creative cuisine","Tokyo-to Shinjuku-ku Kabukicho",35.6938401,139.7035494
+"773","restaurant_ 773","Creative cuisine","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"774","restaurant_ 774","Creative cuisine","Osaka-fu Osaka-shi Shinmachi",34.6762311,135.4860587
+"775","restaurant_ 775","Creative cuisine","Tokyo-to Nakano-ku Nakano",35.7073985,139.6638354
+"776","restaurant_ 776","Creative cuisine","Tokyo-to Nakano-ku Nakano",35.7073985,139.6638354
+"777","restaurant_ 777","Creative cuisine","Hyogo-ken Nishinomiya-shi Rokutanjicho",34.7375965,135.3415643
+"778","restaurant_ 778","Creative cuisine","Hyogo-ken Nishinomiya-shi Rokutanjicho",34.7375965,135.3415643
+"779","restaurant_ 779","Creative cuisine","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"780","restaurant_ 780","Creative cuisine","Hyogo-ken Himeji-shi Yasuda",34.815149,134.6853528
+"781","restaurant_ 781","Other","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"782","restaurant_ 782","Other","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"783","restaurant_ 783","Other","Fukuoka-ken Fukuoka-shi Daimyo",33.5892157,130.3928134
+"784","restaurant_ 784","Other","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"785","restaurant_ 785","Other","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"786","restaurant_ 786","Other","Tokyo-to Setagaya-ku Setagaya",35.6465721,139.6532473
+"787","restaurant_ 787","Other","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"788","restaurant_ 788","Other","Osaka-fu Osaka-shi Ogimachi",34.7053617,135.5100252
+"789","restaurant_ 789","Other","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"790","restaurant_ 790","Other","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"791","restaurant_ 791","Other","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"792","restaurant_ 792","Other","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"793","restaurant_ 793","Other","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"794","restaurant_ 794","Other","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"795","restaurant_ 795","Other","Tokyo-to Meguro-ku Kamimeguro",35.6414629,139.6981712
+"796","restaurant_ 796","Other","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"797","restaurant_ 797","Other","Fukuoka-ken Fukuoka-shi Hakata Ekimae",33.5913576,130.4148783
+"798","restaurant_ 798","Other","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"799","restaurant_ 799","Other","Shizuoka-ken Hamamatsu-shi Motoshirocho",34.7108955,137.7259397
+"800","restaurant_ 800","Other","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"801","restaurant_ 801","Other","Tokyo-to Taito-ku Higashiueno",35.712607,139.7799956
+"802","restaurant_ 802","Other","Osaka-fu Osaka-shi Kyomachibori",34.6876966,135.4954131
+"803","restaurant_ 803","Other","Osaka-fu Osaka-shi Kyomachibori",34.6876966,135.4954131
+"804","restaurant_ 804","Other","Tokyo-to Bunkyo-ku Kasuga",35.7080677,139.752167
+"805","restaurant_ 805","Other","Tokyo-to Bunkyo-ku Kasuga",35.7080677,139.752167
+"806","restaurant_ 806","Other","Tokyo-to Shibuya-ku Higashi",35.6532174,139.7110363
+"807","restaurant_ 807","Other","Tokyo-to Shibuya-ku Higashi",35.6532174,139.7110363
+"808","restaurant_ 808","Western food","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"809","restaurant_ 809","Western food","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"810","restaurant_ 810","Western food","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"811","restaurant_ 811","Western food","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"812","restaurant_ 812","Western food","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"813","restaurant_ 813","Western food","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"814","restaurant_ 814","Western food","Tokyo-to Suginami-ku Asagayaminami",35.6995657,139.6364379
+"815","restaurant_ 815","Western food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"816","restaurant_ 816","Western food","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"817","restaurant_ 817","Western food","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"818","restaurant_ 818","Western food","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"819","restaurant_ 819","Western food","Tokyo-to Chuo-ku Tsukiji",35.6706505,139.7718614
+"820","restaurant_ 820","Western food","Tokyo-to Itabashi-ku Itabashi",35.7511648,139.7092437
+"821","restaurant_ 821","Western food","Tokyo-to Itabashi-ku Itabashi",35.7511648,139.7092437
+"822","restaurant_ 822","Western food","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"823","restaurant_ 823","Western food","Tokyo-to Chiyoda-ku Kudanminami",35.6940027,139.7535951
+"824","restaurant_ 824","International cuisine","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"825","restaurant_ 825","International cuisine","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"826","restaurant_ 826","Asian","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"827","restaurant_ 827","Asian","Tokyo-to Shibuya-ku Shibuya",35.6617773,139.7040506
+"828","restaurant_ 828","Karaoke/Party","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
+"829","restaurant_ 829","Karaoke/Party","Hokkaido Sapporo-shi Minami 3 Jonishi",43.0554601,141.3409556
