@@ -129,7 +129,7 @@ write.csv(air_visit,"visit_data.csv")
 write.csv(date_info,"date_info.csv")
 write.csv(restaurant_info,"restaurant_info.csv")
 \newpage
-## **Step 1 - read in the dataset**
+## Step 1 - read in the dataset
 
 ```{r}
 reservations <- read.csv("reservation_data.csv")
@@ -350,7 +350,8 @@ reservations %>%
   ggplot(aes(air_genre_name, n, fill = air_genre_name))+
   geom_col() +
   theme(legend.position = "none",axis.text.x  = element_text(angle=45, hjust=1,                       vjust=0.9))+
-  labs(x = "Air genre name", y = "Number of genre restaurants", title= "Restaurants genre name frequency")
+  labs(x = "Air genre name", y = "Number of genre restaurants", 
+       title= "Restaurants genre name frequency")
 
 ```
 
