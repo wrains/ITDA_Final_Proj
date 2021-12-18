@@ -6,7 +6,9 @@ output:
   pdf_document:
     latex_engine: xelatex
     number_sections: yes
+   
 ---  
+![](eseiaat-positiu-p3005-interior-blanc.png)
 
 \newpage
 \tableofcontents
